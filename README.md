@@ -10,6 +10,7 @@ Android"
 # HTTP
 
 <b>Retrofit</b>
+<b><i>OkHttp</i></b>
 
 # DI
 
@@ -18,3 +19,4 @@ Android"
 # Core
 
 <b><i>View Binding</i></b>
+<b>RxJava2</b>
