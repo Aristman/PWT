@@ -6,4 +6,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Poket Word Translator"
-include ':app'
+include(":app")
