@@ -14,3 +14,7 @@ Android"
 # DI
 
 <b>KoDeIn</b>
+
+# Core
+
+<b><i>View Binding</i></b>
