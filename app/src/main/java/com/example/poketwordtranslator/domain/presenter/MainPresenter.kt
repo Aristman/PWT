@@ -7,4 +7,3 @@ interface MainPresenter {
         fun detachView(view: MainView)
         fun getData(word: String, isOnline: Boolean)
 }
-
