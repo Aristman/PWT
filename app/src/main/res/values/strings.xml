@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Poket Word Translator</string>
+    <string name="repeat_loading">Повторить загрузку</string>
+    <string name="word_enter_title">Введите слово на любом языке</string>
+    <string name="translate">Перевести</string>
+    <string name="cancel">Отмена</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.poketwordtranslator.domain
+package com.example.poketwordtranslator.domain.interactor
 
 import io.reactivex.Observable
 

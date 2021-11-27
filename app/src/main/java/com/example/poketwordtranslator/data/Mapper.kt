@@ -15,7 +15,7 @@ fun WordNW.toDomain(): Translations =
                 sound = meaning.soundUrl,
                 transcription = meaning.transcription,
                 translation = meaning.translation.text,
-                note = meaning.translation.note
+                note = meaning.translation.note ?: ""
             )
         }
     )

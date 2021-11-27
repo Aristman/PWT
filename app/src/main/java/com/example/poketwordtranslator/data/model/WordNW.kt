@@ -33,7 +33,7 @@ data class WordNW(
         @Serializable
         data class Translation(
             @SerialName("note")
-            val note: String = "",
+            val note: String?,
             @SerialName("text")
             val text: String
         )

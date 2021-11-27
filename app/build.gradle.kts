@@ -64,4 +64,5 @@ dependencies {
 
     //RxJava2
     implementation("io.reactivex.rxjava2:rxjava:$rxjavaVersion")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 }
