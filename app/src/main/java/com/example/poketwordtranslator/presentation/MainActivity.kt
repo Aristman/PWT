@@ -91,7 +91,6 @@ class MainActivity : AppCompatActivity(), MainView {
         binding.run {
             mainContent.root.visibility = View.VISIBLE
             loadingIndicatorContent.visibility = View.GONE
-            errorRepeatContent.visibility = View.GONE
             wordSearchButton.isEnabled = true
         }
     }
@@ -100,18 +99,19 @@ class MainActivity : AppCompatActivity(), MainView {
         binding.run {
             mainContent.root.visibility = View.GONE
             loadingIndicatorContent.visibility = View.VISIBLE
-            errorRepeatContent.visibility = View.GONE
             wordSearchButton.isEnabled = false
         }
     }
 
     private fun showError() {
-        binding.run {
-            mainContent.root.visibility = View.GONE
-            loadingIndicatorContent.visibility = View.GONE
-            errorRepeatContent.visibility = View.VISIBLE
-            wordSearchButton.isEnabled = false
-        }
+        AlertDialog.Builder(this)
+            .setMessage(R.string.error_message)
+            .setCancelable(false)
+            .setPositiveButton(R.string.ok) { dialog, _ ->
+                showMainContent()
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun onDestroy() {

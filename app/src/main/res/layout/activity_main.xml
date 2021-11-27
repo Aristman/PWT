@@ -12,19 +12,6 @@
         android:layout_gravity="center"
         android:indeterminate="true" />
 
-    <FrameLayout
-        android:id="@+id/error_repeat_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/repeat_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/repeat_loading" />
-    </FrameLayout>
-
     <include
         android:id="@+id/main_content"
         layout="@layout/layout_main_content"

@@ -34,10 +34,13 @@ class MainPresenterImpl(
             .doOnSubscribe {
                 attachView?.handlingData(AppViewState.Loading(null))
             }
+            .map {
+                it.toUi()
+            }
             .toList()
             .subscribe(
                 {
-                    attachView?.handlingData(AppViewState.Success(it.map { item -> item.toUi() }))
+                    attachView?.handlingData(AppViewState.Success(it))
                 },
                 {
                     attachView?.handlingData(AppViewState.Error(it))
