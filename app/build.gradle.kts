@@ -39,10 +39,10 @@ android {
     }
 }
 
-val retrofitVersion = "2.9.0"
-val rxjavaVersion = "2.2.21"
-val okhttpVersion = "4.9.1"
-val serializationVersion = "1.3.1"
+val retrofitVersion = Versions.RETROFIT_VERSION
+val rxjavaVersion = Versions.RXJAVA_VERSION
+val okhttpVersion = Versions.OKHTTP_VERSION
+val serializationVersion = Versions.KOTLIN_SERIALIZATION_VERSION
 
 dependencies {
 
