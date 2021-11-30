@@ -6,4 +6,5 @@
     <string name="cancel">Отмена</string>
     <string name="ok">OK</string>
     <string name="error_message">Ошибка загрузки перевода. Повторите запрос еще раз</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

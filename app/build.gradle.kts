@@ -1,9 +1,9 @@
 plugins {
     id("com.android.application")
-    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -17,6 +17,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -38,6 +41,15 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.composeVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 
     kapt {
@@ -45,36 +57,43 @@ android {
     }
 }
 
-val retrofitVersion = Versions.RETROFIT_VERSION
-val rxjavaVersion = Versions.RXJAVA_VERSION
-val okhttpVersion = Versions.OKHTTP_VERSION
-val serializationVersion = Versions.KOTLIN_SERIALIZATION_VERSION
-val hiltVersion = Versions.HILT_VERSION
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.0")
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation("androidx.activity:activity-compose:1.4.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     //Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KotlinSerializationVersion}")
 
     //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}")
+    implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitVersion}")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
 //    implementation("com.squareup.okhttp3:okhttp:$retrofitVersion")
 
     //RxJava2
-    implementation("io.reactivex.rxjava2:rxjava:$rxjavaVersion")
+    implementation("io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
     //Hilt
-    implementation ("com.google.dagger:hilt-android:$hiltVersion")
-    kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:${Versions.hiltVersion}")
+    annotationProcessor("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
+    kapt("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
+
+    //Jetpack compose
+    implementation("androidx.compose.ui:ui:${Versions.composeVersion}")
+    implementation("androidx.compose.material:material:${Versions.composeVersion}")
+    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.composeVersion}")
+    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.composeVersion}")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:${Versions.composeVersion}")
+    //Accompanist
+    implementation("com.google.accompanist:accompanist-navigation-material:${Versions.accompanistVersion}")
 }

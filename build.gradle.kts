@@ -4,13 +4,11 @@ buildscript {
         google()
         mavenCentral()
     }
-    val kotlinVersion = Versions.KOTLIN_VERSION
-    val gradleVersion = Versions.GRADLE_VERSION
     dependencies {
-        classpath("com.android.tools.build:gradle:$gradleVersion")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
-        classpath ("com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT_VERSION}")
+        classpath("com.android.tools.build:gradle:${Versions.gradleVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlinVersion}")
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}")
         // NOTE: Do not place your application dependencies here; t1hey belong
         // in the individual module build.gradle files
     }
