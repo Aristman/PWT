@@ -10,6 +10,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:$gradleVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT_VERSION}")
         // NOTE: Do not place your application dependencies here; t1hey belong
         // in the individual module build.gradle files
     }

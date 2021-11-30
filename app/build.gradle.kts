@@ -1,7 +1,9 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    id("dagger.hilt.android.plugin")
+    kotlin("android")
+    kotlin("plugin.serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -37,12 +39,17 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 val retrofitVersion = Versions.RETROFIT_VERSION
 val rxjavaVersion = Versions.RXJAVA_VERSION
 val okhttpVersion = Versions.OKHTTP_VERSION
 val serializationVersion = Versions.KOTLIN_SERIALIZATION_VERSION
+val hiltVersion = Versions.HILT_VERSION
 
 dependencies {
 
@@ -66,4 +73,8 @@ dependencies {
     //RxJava2
     implementation("io.reactivex.rxjava2:rxjava:$rxjavaVersion")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+
+    //Hilt
+    implementation ("com.google.dagger:hilt-android:$hiltVersion")
+    kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
 }

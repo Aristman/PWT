@@ -6,5 +6,6 @@ object Versions {
     const val RETROFIT_VERSION = "2.9.0"
     const val RXJAVA_VERSION = "2.2.21"
     const val OKHTTP_VERSION = "4.9.1"
+    const val HILT_VERSION = "2.40.3"
 
 }
