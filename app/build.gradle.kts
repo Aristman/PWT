@@ -8,7 +8,7 @@ android {
     compileSdk = 31
 
     defaultConfig {
-        applicationId = "com.example.poketwordtranslator"
+        applicationId = "ru.marslab.pocketwordtranslator"
         minSdk = 26
         targetSdk = 31
         versionCode = 1
@@ -42,6 +42,7 @@ android {
 val retrofitVersion = "2.9.0"
 val rxjavaVersion = "2.2.21"
 val okhttpVersion = "4.9.1"
+val serializationVersion = "1.3.1"
 
 dependencies {
 
@@ -53,7 +54,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     //Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")

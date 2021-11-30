@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Poket Word Translator"
+rootProject.name = "Pocket Word Translator"
 include(":app")

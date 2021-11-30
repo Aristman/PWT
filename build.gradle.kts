@@ -5,8 +5,9 @@ buildscript {
         mavenCentral()
     }
     val kotlinVersion = "1.5.20"
+    val gradleVersion = "7.0.3"
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.3")
+        classpath("com.android.tools.build:gradle:$gradleVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
         // NOTE: Do not place your application dependencies here; they belong
