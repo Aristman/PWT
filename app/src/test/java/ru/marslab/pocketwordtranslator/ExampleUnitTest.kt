@@ -1,4 +1,4 @@
-package com.example.poketwordtranslator
+package ru.marslab.pocketwordtranslator
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
