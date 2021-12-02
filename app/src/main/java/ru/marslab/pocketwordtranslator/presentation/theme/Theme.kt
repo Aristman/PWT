@@ -6,26 +6,38 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
-private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+val darkColors = darkColors(
+    primary = primaryColor,
+    primaryVariant = primaryDarkColor,
+    secondary = secondaryColor,
+    secondaryVariant = secondaryDarkColor,
+    surface = surfaceDarkColor,
+    error = errorColor,
+    background = backgroundDarkColor,
+    onPrimary = onPrimaryDarkColor,
+    onSecondary = onSecondaryDarkColor,
+    onSurface = onSurfaceDarkColor,
+    onError = onErrorColor,
+    onBackground = onBackgroundDarkColor
 )
 
-private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+val lightColors = lightColors(
+    primary = primaryLightColor,
+    primaryVariant = primaryDarkColor,
+    secondary = secondaryColor,
+    secondaryVariant = secondaryDarkColor,
+    surface = surfaceLightColor,
+    error = errorColor,
+    background = backgroundLightColor,
+    onPrimary = onPrimaryLightColor,
+    onSecondary = onSecondaryLightColor,
+    onSurface = onSurfaceLightColor,
+    onError = onErrorColor,
+    onBackground = onBackgroundLightColor
 )
+
+private val LightColorPalette = lightColors
+private val DarkColorPalette = darkColors
 
 @Composable
 fun PocketWordTranslatorTheme(
