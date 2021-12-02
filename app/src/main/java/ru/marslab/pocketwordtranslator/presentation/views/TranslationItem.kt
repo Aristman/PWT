@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.marslab.pocketwordtranslator.domain.model.Translate
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.theme.Shapes
 import ru.marslab.pocketwordtranslator.presentation.theme.Typography
@@ -40,7 +39,9 @@ fun TranslationItem(item: TranslateWordUi) {
             Divider()
             Text(
                 text = item.translation,
-                modifier = Modifier.padding(bottom = 8.dp).padding(start = 12.dp),
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .padding(start = 12.dp),
                 style = Typography.body1
             )
         }
