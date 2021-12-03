@@ -21,6 +21,7 @@ Android"
 # Core
 
 <b><i>Jetpack Compose</i></b>
+
 <b>RxJava2</b>
 
 # UI
