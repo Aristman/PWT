@@ -14,14 +14,13 @@ Android"
 
 # DI
 
-<b>Hilt</b>
+<b>Hilt</b><br>
 <b>Koin</b>
 
 
 # Core
 
-<b><i>Jetpack Compose</i></b>
-
+<b><i>Jetpack Compose</i></b><br>
 <b>RxJava2</b>
 
 # UI
