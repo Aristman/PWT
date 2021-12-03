@@ -6,5 +6,6 @@ import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 fun Translations.toUi(): TranslateWordUi =
     TranslateWordUi(
         word = originalWord,
-        translation = this.translations.first().translation
+        translation = translations.map { it.translation },
+        sound = translations.map { it.sound }
     )

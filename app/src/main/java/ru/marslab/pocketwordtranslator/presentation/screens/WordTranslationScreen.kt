@@ -9,7 +9,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.autoSaver
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -49,7 +54,10 @@ fun WordTranslationScreen(viewModel: TranslationViewModel) {
                         .padding(8.dp)
                 ) {
                     items(items = result) {
-                        TranslationItem(item = it)
+                        var item by rememberSaveable{ mutableStateOf(it) }
+                        TranslationItem(item = item) {
+                            item = item.copy(isExpanded = !item.isExpanded)
+                        }
                     }
                 }
             }

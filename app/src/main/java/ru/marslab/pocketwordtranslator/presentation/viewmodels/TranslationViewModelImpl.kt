@@ -10,6 +10,7 @@ import ru.marslab.pocketwordtranslator.domain.interactor.Interactor
 import ru.marslab.pocketwordtranslator.domain.model.Translations
 import ru.marslab.pocketwordtranslator.presentation.model.AppAction
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
+import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.toUi
 import javax.inject.Inject
 
@@ -27,6 +28,8 @@ class TranslationViewModelImpl @Inject constructor(
     private val _searchWordDialogAction = MutableSharedFlow<AppAction>()
     override val searchWordDialogAction: SharedFlow<AppAction> =
         _searchWordDialogAction.asSharedFlow()
+
+    private val _translationList = MutableStateFlow<List<TranslateWordUi>>(emptyList())
 
     override fun getTranslations(word: String) {
         disposableContainer.add(interactor.getData(word, fromRemoteSource = true)
