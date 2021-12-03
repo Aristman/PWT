@@ -14,9 +14,15 @@ Android"
 
 # DI
 
-<b>KoDeIn</b>
+<b>Hilt</b>
+<b>Koin</b>
+
 
 # Core
 
-<b><i>View Binding</i></b>
+<b><i>Jetpack Compose</i></b>
 <b>RxJava2</b>
+
+# UI
+
+<b>Accompanist</b>
