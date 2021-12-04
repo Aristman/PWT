@@ -27,6 +27,7 @@ import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModelImpl
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModelImpl
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
+import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 
 @Composable
 fun WordTranslationScreen(
@@ -42,11 +43,13 @@ fun WordTranslationScreen(
         }
     }
 
+    val soundState by soundViewModel.soundState.collectAsState()
     val (isVisibleSoundView, setVisibleSoundView) = remember { mutableStateOf(false) }
     if (isVisibleSoundView) {
-//        WordSoundDialog(
-//            soundUri,
-//        )
+        WordSoundDialog(
+            soundState,
+            setVisibleSoundView
+        )
     }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
@@ -63,8 +66,8 @@ fun WordTranslationScreen(
                             item = it,
                             isExpanded = isExpanded,
                             onClickItem = { isExpanded = !isExpanded }
-                        ) { sound ->
-//                            viewModel.getWordSound(sound)
+                        ) { url ->
+                            soundViewModel.getWordSound(url, it.word)
                             setVisibleSoundView(true)
                         }
                     }

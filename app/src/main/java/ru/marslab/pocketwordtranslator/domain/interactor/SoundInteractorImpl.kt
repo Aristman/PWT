@@ -8,6 +8,8 @@ class SoundInteractorImpl(
     private val networkRepository: NetworkRepository,
     private val fileRepository: FileRepository
 ) : SoundInteractor {
+
+    @Throws(Exception::class)
     override suspend fun getWordSound(url: String, filename: String): Uri? {
         val source = networkRepository.getWordSound(url)
         return source?.let { fileRepository.saveFileToCache(filename, it) }

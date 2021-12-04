@@ -18,40 +18,43 @@ import androidx.compose.ui.window.Dialog
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.PlayerView
+import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 
 @Composable
 fun WordSoundDialog(
-    soundUri: Uri,
+    soundState: AppViewState<Uri, Throwable>,
     setVisible: (Boolean) -> Unit
 ) {
     val context = LocalContext.current
-    val mediaItem = remember {
-        MediaItem.fromUri(soundUri)
-    }
-    val player = remember {
-        ExoPlayer.Builder(context).build()
-    }
-    player.apply {
-        addMediaItem(mediaItem)
-        prepare()
-    }
     Dialog(onDismissRequest = { setVisible(false) }) {
         Box(
             modifier = Modifier
                 .size(width = 200.dp, height = 80.dp)
-                .background(MaterialTheme.colors.secondary.copy(alpha = 0.5f))
+                .background(MaterialTheme.colors.secondary)
         ) {
-            AndroidView(
-                modifier = Modifier.fillMaxSize(),
-                factory = {
-                    PlayerView(context).apply {
-                        setPlayer(player)
-                        FrameLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT
-                        )
-                    }
-                })
+            LCEView(appViewState = soundState) { uri ->
+                val mediaItem = remember {
+                    MediaItem.fromUri(uri)
+                }
+                val player = remember {
+                    ExoPlayer.Builder(context).build()
+                }
+                player.apply {
+                    addMediaItem(mediaItem)
+                    prepare()
+                }
+                AndroidView(
+                    modifier = Modifier.fillMaxSize(),
+                    factory = {
+                        PlayerView(context).apply {
+                            setPlayer(player)
+                            FrameLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT
+                            )
+                        }
+                    })
+            }
         }
     }
 }
