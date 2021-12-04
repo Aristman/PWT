@@ -1,14 +1,10 @@
 package ru.marslab.pocketwordtranslator.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.domain.interactor.Interactor
-import ru.marslab.pocketwordtranslator.domain.model.Translations
-import ru.marslab.pocketwordtranslator.presentation.model.AppAction
+import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.toUi
@@ -16,20 +12,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TranslationViewModelImpl @Inject constructor(
-    private val interactor: Interactor<Translations>
+    private val translationInteractor: TranslationInteractor
 ) : ViewModel(), TranslationViewModel {
 
     private val disposableContainer = CompositeDisposable()
 
-    private val _translationsState = MutableStateFlow<AppViewState<List<TranslateWordUi>, Throwable>>(AppViewState.Init)
+    private val _translationsState =
+        MutableStateFlow<AppViewState<List<TranslateWordUi>, Throwable>>(AppViewState.Init)
     override val translationsState = _translationsState.asStateFlow()
 
-    private val _searchWordDialogAction = MutableSharedFlow<AppAction>()
-    override val searchWordDialogAction: SharedFlow<AppAction> =
-        _searchWordDialogAction.asSharedFlow()
-
     override fun getTranslations(word: String) {
-        disposableContainer.add(interactor.getData(word, fromRemoteSource = true)
+        disposableContainer.add(translationInteractor.getData(word, fromRemoteSource = true)
             .doOnSubscribe {
                 _translationsState.tryEmit(AppViewState.Loading(null))
             }
@@ -46,11 +39,5 @@ class TranslationViewModelImpl @Inject constructor(
                 }
             )
         )
-    }
-
-    override fun showSearchDialog() {
-        viewModelScope.launch {
-            _searchWordDialogAction.emit(AppAction.Show)
-        }
     }
 }

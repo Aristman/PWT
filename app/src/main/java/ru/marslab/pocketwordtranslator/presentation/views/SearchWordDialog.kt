@@ -8,10 +8,9 @@ import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import ru.marslab.pocketwordtranslator.R
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.AppActionViewModel
 
 @Composable
-fun SearchWordDialog(viewModel: AppActionViewModel, searchWord: (word: String) -> Unit) {
+fun SearchWordDialog(setVisible: (Boolean) -> Unit, searchWord: (word: String) -> Unit) {
     var searchText by remember { mutableStateOf("") }
     AlertDialog(
         onDismissRequest = { },
@@ -24,7 +23,7 @@ fun SearchWordDialog(viewModel: AppActionViewModel, searchWord: (word: String) -
         confirmButton = {
             Button(onClick = {
                 searchWord(searchText)
-                viewModel.viewHide()
+                setVisible(false)
             }) {
                 Text(text = stringResource(id = R.string.ok))
             }

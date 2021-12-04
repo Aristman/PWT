@@ -9,6 +9,7 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.google.accompanist.navigation.material.rememberBottomSheetNavigator
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
+import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModelImpl
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModelImpl
 
 internal object Destinations {
@@ -21,11 +22,12 @@ fun MainScreen() {
     val bottomSheetNavigator = rememberBottomSheetNavigator()
     val navController = rememberNavController(bottomSheetNavigator)
     val translationViewModel = viewModel(modelClass = TranslationViewModelImpl::class.java)
+    val soundViewModel = viewModel(modelClass = SoundViewModelImpl::class.java)
     PocketWordTranslatorTheme {
         ModalBottomSheetLayout(bottomSheetNavigator = bottomSheetNavigator) {
             NavHost(navController = navController, startDestination = Destinations.Translator) {
                 composable(Destinations.Translator) {
-                    WordTranslationScreen(translationViewModel)
+                    WordTranslationScreen(translationViewModel, soundViewModel)
                 }
             }
         }
