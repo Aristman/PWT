@@ -56,5 +56,4 @@ class TranslationViewModelImpl @Inject constructor(
             _searchWordDialogAction.emit(AppAction.Show)
         }
     }
-
 }

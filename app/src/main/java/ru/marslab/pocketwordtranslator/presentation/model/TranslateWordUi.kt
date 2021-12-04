@@ -7,6 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class TranslateWordUi(
     val word: String,
     val translation: List<String>,
-    val sound: List<String>,
-    val isExpanded: Boolean = false
+    val sound: List<String>
 ) : Parcelable

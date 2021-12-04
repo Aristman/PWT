@@ -1,5 +1,6 @@
 package ru.marslab.pocketwordtranslator.presentation.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,13 +13,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.autoSaver
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import ru.marslab.pocketwordtranslator.R
 import ru.marslab.pocketwordtranslator.presentation.model.AppAction
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
@@ -38,6 +41,7 @@ fun WordTranslationScreen(viewModel: TranslationViewModel) {
         AppActionViewModel()
     }
     val searchDialogAction = searchViewModel.appAction.collectAsState()
+    val context = LocalContext.current
     if (searchDialogAction.value is AppAction.Show) {
         SearchWordDialog(viewModel = searchViewModel) { word ->
             viewModel.getTranslations(word)
@@ -54,9 +58,13 @@ fun WordTranslationScreen(viewModel: TranslationViewModel) {
                         .padding(8.dp)
                 ) {
                     items(items = result) {
-                        var item by rememberSaveable{ mutableStateOf(it) }
-                        TranslationItem(item = item) {
-                            item = item.copy(isExpanded = !item.isExpanded)
+                        var isExpanded by rememberSaveable { mutableStateOf(false) }
+                        TranslationItem(
+                            item = it,
+                            isExpanded = isExpanded,
+                            onClickItem = { isExpanded = !isExpanded }
+                        ) { sound ->
+                            Toast.makeText(context, sound, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

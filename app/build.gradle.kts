@@ -1,10 +1,10 @@
 plugins {
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-parcelize")
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
-    id("kotlin-parcelize")
 }
 
 android {
