@@ -48,16 +48,14 @@ fun WordTranslationScreen(viewModel: TranslationViewModel) {
         }
     }
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
-        LCEView(appViewState = translationsState) {
-            val result =
-                ((translationsState as AppViewState.Success<*>).data as List<*>).map { it as TranslateWordUi }
+        LCEView(appViewState = translationsState) { data ->
             Box {
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(8.dp)
                 ) {
-                    items(items = result) {
+                    items(items = data) {
                         var isExpanded by rememberSaveable { mutableStateOf(false) }
                         TranslationItem(
                             item = it,

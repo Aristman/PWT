@@ -1,8 +1,8 @@
 package ru.marslab.pocketwordtranslator.presentation.model
 
-sealed class AppViewState {
-    object Init : AppViewState()
-    data class Success<out T>(val data: T) : AppViewState()
-    data class Error(val error: Throwable) : AppViewState()
-    data class Loading(val progress: Int?) : AppViewState()
+sealed class AppViewState<out T, out E> {
+    object Init : AppViewState<Nothing, Nothing>()
+    data class Success<out T>(val data: T) : AppViewState<T, Nothing>()
+    data class Error<out E>(val error: E) : AppViewState<Nothing, E>()
+    data class Loading(val progress: Int?) : AppViewState<Nothing, Nothing>()
 }

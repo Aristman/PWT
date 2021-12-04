@@ -21,15 +21,12 @@ class TranslationViewModelImpl @Inject constructor(
 
     private val disposableContainer = CompositeDisposable()
 
-    private val _translationsState = MutableStateFlow<AppViewState>(AppViewState.Init)
-    override val translationsState: StateFlow<AppViewState> =
-        _translationsState.asStateFlow()
+    private val _translationsState = MutableStateFlow<AppViewState<List<TranslateWordUi>, Throwable>>(AppViewState.Init)
+    override val translationsState = _translationsState.asStateFlow()
 
     private val _searchWordDialogAction = MutableSharedFlow<AppAction>()
     override val searchWordDialogAction: SharedFlow<AppAction> =
         _searchWordDialogAction.asSharedFlow()
-
-    private val _translationList = MutableStateFlow<List<TranslateWordUi>>(emptyList())
 
     override fun getTranslations(word: String) {
         disposableContainer.add(interactor.getData(word, fromRemoteSource = true)

@@ -19,13 +19,13 @@ private const val LOADING_ERROR = "Ошибка загрузки!"
 private const val REPEAT = "Повторить"
 
 @Composable
-fun LCEView(
-    appViewState: AppViewState,
+fun <T, E> LCEView(
+    appViewState: AppViewState<T, E>,
     initContent: (@Composable () -> Unit)? = null,
     loadingContent: (@Composable () -> Unit)? = null,
-    errorContent: (@Composable (e: Throwable) -> Unit)? = null,
+    errorContent: (@Composable (e: E) -> Unit)? = null,
     repeatLoading: (() -> Unit)? = null,
-    mainContent: @Composable () -> Unit
+    mainContent: @Composable (data: T) -> Unit
 ) {
     when (appViewState) {
         AppViewState.Init -> {
@@ -45,8 +45,8 @@ fun LCEView(
                 loadingContent()
             }
         }
-        is AppViewState.Success<*> -> {
-            mainContent()
+        is AppViewState.Success<T> -> {
+            mainContent(appViewState.data)
         }
     }
 }

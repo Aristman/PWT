@@ -7,7 +7,7 @@ import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 
 interface TranslationViewModel {
-    val translationsState: StateFlow<AppViewState>
+    val translationsState: StateFlow<AppViewState<List<TranslateWordUi>, Throwable>>
     val searchWordDialogAction: SharedFlow<AppAction>
 
     fun getTranslations(word: String)
