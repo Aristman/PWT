@@ -1,12 +1,14 @@
 package ru.marslab.pocketwordtranslator.presentation.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -76,7 +78,8 @@ fun WordTranslationScreen(
         }
         FloatingActionButton(
             onClick = { setVisibleSearchDialog(true) },
-            modifier = Modifier.padding(bottom = 24.dp, end = 24.dp)
+            modifier = Modifier.padding(bottom = 24.dp, end = 24.dp),
+            backgroundColor = MaterialTheme.colors.secondaryVariant
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_baseline_search_24),

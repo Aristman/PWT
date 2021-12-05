@@ -27,7 +27,6 @@ internal object NetworkModule {
         PwtRetrofit.createRetrofit(client)
 
     @Provides
-    @Singleton
     fun provideOkHttpClient(): OkHttpClient =
         PwtOkHttp.createClient()
 

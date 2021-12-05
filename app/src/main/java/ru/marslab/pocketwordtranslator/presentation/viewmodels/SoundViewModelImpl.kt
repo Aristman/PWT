@@ -13,6 +13,8 @@ import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import javax.inject.Inject
 
+private const val LOAD_SOUND_ERROR = "Не получен файл озвучки"
+
 @HiltViewModel
 class SoundViewModelImpl @Inject constructor(
     private val soundInteractor: SoundInteractor
@@ -30,7 +32,7 @@ class SoundViewModelImpl @Inject constructor(
                 if (wordSound != null) {
                     _soundState.tryEmit(AppViewState.Success(wordSound))
                 } else {
-                    _soundState.tryEmit(AppViewState.Error(Throwable("Не получен файл озвучки")))
+                    _soundState.tryEmit(AppViewState.Error(Throwable(LOAD_SOUND_ERROR)))
                 }
             } catch (e: Exception) {
                 _soundState.tryEmit(AppViewState.Error(e))
