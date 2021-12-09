@@ -7,7 +7,8 @@ object Versions {
 
     const val retrofitVersion = "2.9.0"
     const val rxJavaVersion = "2.2.21"
-    const val okHttpVersion = "4.9.1"
+    const val okHttpVersion = "5.0.0-alpha.3"
     const val hiltVersion = "2.40.3"
-
+    const val koinVersion = "3.1.2"
+    const val exoPlayerVersion = "2.16.1"
 }

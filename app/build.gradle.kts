@@ -76,8 +76,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}")
     implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}")
     implementation("com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitVersion}")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
-//    implementation("com.squareup.okhttp3:okhttp:$retrofitVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}")
+    implementation("com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}")
 
     //RxJava2
     implementation("io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}")
@@ -88,6 +88,10 @@ dependencies {
     annotationProcessor("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
     kapt("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
 
+    //Koin
+    implementation ("io.insert-koin:koin-core:${Versions.koinVersion}")
+    implementation ("io.insert-koin:koin-android:${Versions.koinVersion}")
+
     //Jetpack compose
     implementation("androidx.compose.ui:ui:${Versions.composeVersion}")
     implementation("androidx.compose.material:material:${Versions.composeVersion}")
@@ -97,4 +101,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:${Versions.composeVersion}")
     //Accompanist
     implementation("com.google.accompanist:accompanist-navigation-material:${Versions.accompanistVersion}")
+    //ExoPlayer
+    implementation ("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
 }
