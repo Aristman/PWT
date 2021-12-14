@@ -1,6 +1,6 @@
 package ru.marslab.pocketwordtranslator.domain.model
 
-data class WordHistory(
+data class HistoryWord(
     val id: Int,
     val word: String
 )

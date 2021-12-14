@@ -1,10 +1,14 @@
 package ru.marslab.pocketwordtranslator.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.marslab.pocketwordtranslator.data.room.MainDatabase
 import ru.marslab.pocketwordtranslator.domain.DatabaseRepository
+import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractor
+import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
@@ -32,4 +36,9 @@ internal object InteractorModule {
         fileRepository: FileRepository
     ): SoundInteractor =
         SoundInteractorImpl(networkRepository, fileRepository)
+
+    @Provides
+    @Singleton
+    fun provideHistoryInteractor(database: MainDatabase): HistoryInteractor =
+        HistoryInteractorImpl(database)
 }
