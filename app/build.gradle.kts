@@ -21,6 +21,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
     }
 
     buildTypes {
@@ -56,6 +62,7 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
 }
 
 dependencies {
@@ -89,8 +96,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
 
     //Koin
-    implementation ("io.insert-koin:koin-core:${Versions.koinVersion}")
-    implementation ("io.insert-koin:koin-android:${Versions.koinVersion}")
+    implementation("io.insert-koin:koin-core:${Versions.koinVersion}")
+    implementation("io.insert-koin:koin-android:${Versions.koinVersion}")
 
     //Jetpack compose
     implementation("androidx.compose.ui:ui:${Versions.composeVersion}")
@@ -102,5 +109,12 @@ dependencies {
     //Accompanist
     implementation("com.google.accompanist:accompanist-navigation-material:${Versions.accompanistVersion}")
     //ExoPlayer
-    implementation ("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
+    implementation("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
+    //Room
+    implementation("androidx.room:room-runtime:${Versions.roomVersion}")
+    annotationProcessor("androidx.room:room-compiler:${Versions.roomVersion}")
+    kapt("androidx.room:room-compiler:${Versions.roomVersion}")
+    implementation("androidx.room:room-rxjava2:${Versions.roomVersion}")
+    //Glide
+    implementation("com.github.skydoves:landscapist-glide:1.4.4")
 }

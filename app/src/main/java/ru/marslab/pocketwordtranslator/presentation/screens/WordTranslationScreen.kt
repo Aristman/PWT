@@ -1,7 +1,6 @@
 package ru.marslab.pocketwordtranslator.presentation.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -20,14 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 import ru.marslab.pocketwordtranslator.presentation.views.SearchWordDialog
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModelImpl
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModelImpl
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
 import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 

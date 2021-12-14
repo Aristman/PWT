@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.marslab.pocketwordtranslator.domain.DatabaseRepository
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
@@ -18,11 +19,17 @@ internal object InteractorModule {
 
     @Provides
     @Singleton
-    fun provideTranslateInteractor(networkRepository: NetworkRepository): TranslationInteractor =
-        TranslationInteractorImpl(networkRepository)
+    fun provideTranslateInteractor(
+        networkRepository: NetworkRepository,
+        databaseRepository: DatabaseRepository
+    ): TranslationInteractor =
+        TranslationInteractorImpl(networkRepository, databaseRepository)
 
     @Provides
     @Singleton
-    fun provideSoundInteractor(networkRepository: NetworkRepository, fileRepository: FileRepository): SoundInteractor =
+    fun provideSoundInteractor(
+        networkRepository: NetworkRepository,
+        fileRepository: FileRepository
+    ): SoundInteractor =
         SoundInteractorImpl(networkRepository, fileRepository)
 }

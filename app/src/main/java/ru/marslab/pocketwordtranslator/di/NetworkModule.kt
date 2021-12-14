@@ -15,8 +15,6 @@ import ru.marslab.pocketwordtranslator.data.retrofit.PwtApi
 import ru.marslab.pocketwordtranslator.data.retrofit.PwtRetrofit
 import javax.inject.Singleton
 
-private const val TRANSLATE_BASE_URL = "https://dictionary.skyeng.ru/api/public/v1/"
-
 @Module
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {

@@ -1,8 +1,11 @@
 package ru.marslab.pocketwordtranslator.data
 
+import ru.marslab.pocketwordtranslator.data.model.HistoryWordDB
 import ru.marslab.pocketwordtranslator.data.model.WordNW
 import ru.marslab.pocketwordtranslator.domain.model.Translate
 import ru.marslab.pocketwordtranslator.domain.model.Translations
+import java.time.LocalTime
+import java.util.*
 
 fun WordNW.toDomain(): Translations =
     Translations(
@@ -18,4 +21,11 @@ fun WordNW.toDomain(): Translations =
                 note = meaning.translation.note ?: ""
             )
         }
+    )
+
+fun Translations.toHistoryDB(): HistoryWordDB =
+    HistoryWordDB(
+        id = id,
+        word = originalWord,
+        saveTime = Date().time
     )

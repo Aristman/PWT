@@ -22,22 +22,28 @@ class TranslationViewModelImpl @Inject constructor(
     override val translationsState = _translationsState.asStateFlow()
 
     override fun getTranslations(word: String) {
-        disposableContainer.add(translationInteractor.getData(word, fromRemoteSource = true)
-            .doOnSubscribe {
-                _translationsState.tryEmit(AppViewState.Loading(null))
-            }
-            .map {
-                it.toUi()
-            }
-            .toList()
-            .subscribe(
-                {
-                    _translationsState.tryEmit(AppViewState.Success(it))
-                },
-                {
-                    _translationsState.tryEmit(AppViewState.Error(it))
+        disposableContainer.addAll(
+            translationInteractor.getData(word, fromRemoteSource = true)
+                .doOnSubscribe {
+                    _translationsState.tryEmit(AppViewState.Loading(null))
                 }
-            )
+                .map {
+                    it.toUi()
+                }
+                .toList()
+                .subscribe(
+                    {
+                        _translationsState.tryEmit(AppViewState.Success(it))
+                    },
+                    {
+                        _translationsState.tryEmit(AppViewState.Error(it))
+                    }
+                )
         )
+    }
+
+    override fun onCleared() {
+        disposableContainer.dispose()
+        super.onCleared()
     }
 }
