@@ -4,6 +4,7 @@ import ru.marslab.pocketwordtranslator.data.model.HistoryWordDB
 import ru.marslab.pocketwordtranslator.data.model.WordNW
 import ru.marslab.pocketwordtranslator.domain.model.Translate
 import ru.marslab.pocketwordtranslator.domain.model.Translations
+import ru.marslab.pocketwordtranslator.domain.model.WordHistory
 import java.time.LocalTime
 import java.util.*
 
@@ -23,9 +24,9 @@ fun WordNW.toDomain(): Translations =
         }
     )
 
-fun Translations.toHistoryDB(): HistoryWordDB =
+fun WordHistory.toHistoryDB(): HistoryWordDB =
     HistoryWordDB(
         id = id,
-        word = originalWord,
+        word = word,
         saveTime = Date().time
     )

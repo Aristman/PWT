@@ -7,4 +7,5 @@ import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 interface TranslationViewModel{
     val translationsState: StateFlow<AppViewState<List<TranslateWordUi>, Throwable>>
     fun getTranslations(word: String)
+    fun saveToHistory(word: TranslateWordUi)
 }

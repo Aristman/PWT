@@ -92,6 +92,7 @@ fun ItemPreView() {
     }
     TranslationItem(
         item = TranslateWordUi(
+            id = 1,
             word = "Test",
             translation = listOf("пример перевода Слова", "пример перевода Слова"),
             sound = listOf("1,", "2")

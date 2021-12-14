@@ -1,7 +1,7 @@
 package ru.marslab.pocketwordtranslator.domain
 
-import ru.marslab.pocketwordtranslator.domain.model.Translations
+import ru.marslab.pocketwordtranslator.domain.model.WordHistory
 
 interface DatabaseRepository {
-    fun saveToHistory(word: Translations)
+    suspend fun saveToHistory(word: WordHistory)
 }

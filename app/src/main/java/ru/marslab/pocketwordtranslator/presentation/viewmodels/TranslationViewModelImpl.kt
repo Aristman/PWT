@@ -1,12 +1,16 @@
 package ru.marslab.pocketwordtranslator.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
+import ru.marslab.pocketwordtranslator.presentation.toDomainHistory
 import ru.marslab.pocketwordtranslator.presentation.toUi
 import javax.inject.Inject
 
@@ -40,6 +44,12 @@ class TranslationViewModelImpl @Inject constructor(
                     }
                 )
         )
+    }
+
+    override fun saveToHistory(word: TranslateWordUi) {
+        viewModelScope.launch(Dispatchers.IO) {
+            translationInteractor.saveToHistory(word.toDomainHistory())
+        }
     }
 
     override fun onCleared() {

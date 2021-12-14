@@ -63,7 +63,10 @@ fun WordTranslationScreen(
                         TranslationItem(
                             item = it,
                             isExpanded = isExpanded,
-                            onClickItem = { isExpanded = !isExpanded }
+                            onClickItem = { word->
+                                isExpanded = !isExpanded
+                                translationViewModel.saveToHistory(word)
+                            }
                         ) { url ->
                             soundViewModel.getWordSound(url, it.word)
                             setVisibleSoundView(true)

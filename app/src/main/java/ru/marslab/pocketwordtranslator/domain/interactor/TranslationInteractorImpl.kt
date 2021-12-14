@@ -3,6 +3,7 @@ package ru.marslab.pocketwordtranslator.domain.interactor
 import io.reactivex.Observable
 import ru.marslab.pocketwordtranslator.domain.DatabaseRepository
 import ru.marslab.pocketwordtranslator.domain.model.Translations
+import ru.marslab.pocketwordtranslator.domain.model.WordHistory
 import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
 
 
@@ -12,13 +13,8 @@ class TranslationInteractorImpl(
 ) : TranslationInteractor {
     override fun getData(word: String, fromRemoteSource: Boolean): Observable<Translations> =
         networkRepository.getTranslations(word)
-            .toList()
-            .flattenAsObservable {
-                databaseRepository.saveToHistory(it.first())
-                it
-            }
 
-    override fun saveToHistory(word: Translations) {
+    override suspend fun saveToHistory(word: WordHistory) {
         databaseRepository.saveToHistory(word)
     }
 }
