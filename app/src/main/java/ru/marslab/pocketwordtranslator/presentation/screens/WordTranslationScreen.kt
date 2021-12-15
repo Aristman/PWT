@@ -29,17 +29,15 @@ import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
 import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 
 @Composable
-fun WordTranslationScreen(
-
-) {
+fun WordTranslationScreen(word: String?) {
     val translationViewModel = getViewModel<TranslationViewModel>()
     val soundViewModel = getViewModel<SoundViewModel>()
     val translationsState by translationViewModel.translationsState.collectAsState()
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
     if (isVisibleSearchDialog) {
-        SearchWordDialog(setVisibleSearchDialog) { word ->
-            translationViewModel.getTranslations(word)
+        SearchWordDialog(setVisibleSearchDialog) { searchWord ->
+            translationViewModel.getTranslations(searchWord)
         }
     }
 
@@ -51,6 +49,8 @@ fun WordTranslationScreen(
             setVisibleSoundView
         )
     }
+
+    word?.let { translationViewModel.getTranslations(it) }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
         LCEView(appViewState = translationsState) { data ->

@@ -62,7 +62,7 @@ fun TranslationItem(
 }
 
 @Composable
-fun ExpandItem(
+private fun ExpandItem(
     item: TranslateWordUi
 ) {
     Column(Modifier.fillMaxWidth()) {
@@ -113,12 +113,6 @@ fun ExpandItem(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ExpandItemPreview() {
-    ExpandItem(item = mocaItem)
-}
-
 @Composable
 private fun CollapseItem(
     item: TranslateWordUi
@@ -137,27 +131,19 @@ private fun CollapseItem(
             )
         }
         Divider()
-//        val items = if (isExpanded) {
-//            item.translation
-//        } else {
-        val items = listOf(item.translation.first())
-//        }
-        items.forEach { translation ->
-            Row(
-                Modifier.fillMaxWidth(),
-                verticalAlignment = CenterVertically
-            ) {
-                Text(
-                    text = translation,
-                    modifier = Modifier
-                        .padding(start = 12.dp, bottom = 4.dp, top = 4.dp),
-                    style = Typography.body1
-                )
-            }
+        Row(
+            Modifier.fillMaxWidth(),
+            verticalAlignment = CenterVertically
+        ) {
+            Text(
+                text = item.translation.first(),
+                modifier = Modifier
+                    .padding(start = 12.dp, bottom = 4.dp, top = 4.dp),
+                style = Typography.body1
+            )
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
