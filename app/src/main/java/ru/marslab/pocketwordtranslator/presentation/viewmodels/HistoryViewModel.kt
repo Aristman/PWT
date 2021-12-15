@@ -14,13 +14,13 @@ import ru.marslab.pocketwordtranslator.presentation.toUi
 
 class HistoryViewModel (
     private val historyInteractor: HistoryInteractor
-) : IHistoryViewModel, ViewModel() {
+) : ViewModel() {
     private val _historyList =
         MutableStateFlow<AppViewState<List<HistoryWordUi>, Throwable>>(AppViewState.Init)
-    override val historyList: StateFlow<AppViewState<List<HistoryWordUi>, Throwable>> =
+    val historyList: StateFlow<AppViewState<List<HistoryWordUi>, Throwable>> =
         _historyList.asStateFlow()
 
-    override fun loadHistory() {
+    fun loadHistory() {
         CoroutineScope(Dispatchers.IO).launch {
             historyInteractor.loadHistory()
                 .doOnSubscribe {

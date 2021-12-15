@@ -15,15 +15,15 @@ import ru.marslab.pocketwordtranslator.presentation.toUi
 
 class TranslationViewModel(
     private val translationInteractor: TranslationInteractor
-) : ViewModel(), ITranslationViewModel {
+) : ViewModel() {
 
     private val disposableContainer = CompositeDisposable()
 
     private val _translationsState =
         MutableStateFlow<AppViewState<List<TranslateWordUi>, Throwable>>(AppViewState.Init)
-    override val translationsState = _translationsState.asStateFlow()
+    val translationsState = _translationsState.asStateFlow()
 
-    override fun getTranslations(word: String) {
+    fun getTranslations(word: String) {
         disposableContainer.addAll(
             translationInteractor.getData(word, fromRemoteSource = true)
                 .doOnSubscribe {
@@ -44,7 +44,7 @@ class TranslationViewModel(
         )
     }
 
-    override fun saveToHistory(word: TranslateWordUi) {
+    fun saveToHistory(word: TranslateWordUi) {
         viewModelScope.launch(Dispatchers.IO) {
             translationInteractor.saveToHistory(word.toDomainHistory())
         }

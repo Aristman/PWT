@@ -12,4 +12,5 @@ object Versions {
     const val koinVersion = "3.1.4"
     const val exoPlayerVersion = "2.16.1"
     const val roomVersion = "2.3.0"
+    const val glideVersion = "1.4.4"
 }

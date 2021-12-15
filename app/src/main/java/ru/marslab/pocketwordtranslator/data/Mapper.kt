@@ -15,6 +15,7 @@ fun WordNW.toDomain(): Translations =
             Translate(
                 id = meaning.id,
                 image = meaning.imageUrl,
+                preview = meaning.previewUrl,
                 sound = meaning.soundUrl,
                 transcription = meaning.transcription,
                 translation = meaning.translation.text,

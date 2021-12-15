@@ -23,15 +23,14 @@ internal object Destinations {
 fun MainScreen() {
     val bottomSheetNavigator = rememberBottomSheetNavigator()
     val navController = rememberNavController(bottomSheetNavigator)
-    val historyViewModel = getViewModel<HistoryViewModel>()
     PocketWordTranslatorTheme {
         ModalBottomSheetLayout(bottomSheetNavigator = bottomSheetNavigator) {
-            NavHost(navController = navController, startDestination = Destinations.History) {
+            NavHost(navController = navController, startDestination = Destinations.Translator) {
                 composable(Destinations.Translator) {
                     WordTranslationScreen()
                 }
                 composable(Destinations.History) {
-                    HistoryScreen(historyViewModel = historyViewModel) {
+                    HistoryScreen() {
                         navController.navigate(Destinations.Translator)
                     }
                 }

@@ -8,5 +8,8 @@ data class TranslateWordUi(
     val id : Int,
     val word: String,
     val translation: List<String>,
-    val sound: List<String>
+    val image: String,
+    val preview: String,
+    val transcription: String,
+    val sound: String
 ) : Parcelable

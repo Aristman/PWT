@@ -21,8 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.getViewModel
 import ru.marslab.pocketwordtranslator.R
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.ISoundViewModel
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.ITranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView

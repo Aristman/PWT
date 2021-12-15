@@ -16,15 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.koin.androidx.compose.getViewModel
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.IHistoryViewModel
+import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 
 @Composable
-fun HistoryScreen(
-    historyViewModel: IHistoryViewModel,
-    onclickItem: (item: HistoryWordUi) -> Unit
-) {
+fun HistoryScreen(onclickItem: (item: HistoryWordUi) -> Unit) {
+    val historyViewModel = getViewModel<HistoryViewModel>()
     val historyState by historyViewModel.historyList.collectAsState()
     historyViewModel.loadHistory()
     LCEView(appViewState = historyState) { historyList ->

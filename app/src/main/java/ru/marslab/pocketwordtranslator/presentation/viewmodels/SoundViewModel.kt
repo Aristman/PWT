@@ -15,13 +15,13 @@ private const val LOAD_SOUND_ERROR = "Не получен файл озвучк�
 
 class SoundViewModel (
     private val soundInteractor: SoundInteractor
-) : ViewModel(), ISoundViewModel {
+) : ViewModel(){
 
     private val _soundState = MutableStateFlow<AppViewState<Uri, Throwable>>(AppViewState.Init)
-    override val soundState: StateFlow<AppViewState<Uri, Throwable>> =
+    val soundState: StateFlow<AppViewState<Uri, Throwable>> =
         _soundState.asStateFlow()
 
-    override fun getWordSound(url: String, word: String) {
+    fun getWordSound(url: String, word: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _soundState.tryEmit(AppViewState.Loading(null))

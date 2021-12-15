@@ -111,5 +111,5 @@ dependencies {
     kapt("androidx.room:room-compiler:${Versions.roomVersion}")
     implementation("androidx.room:room-rxjava2:${Versions.roomVersion}")
     //Glide
-    implementation("com.github.skydoves:landscapist-glide:1.4.4")
+    implementation("com.github.skydoves:landscapist-glide:${Versions.glideVersion}")
 }
