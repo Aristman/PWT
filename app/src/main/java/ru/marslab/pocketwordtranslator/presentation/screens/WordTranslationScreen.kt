@@ -19,7 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import org.koin.androidx.compose.getViewModel
 import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.presentation.viewmodels.ISoundViewModel
+import ru.marslab.pocketwordtranslator.presentation.viewmodels.ITranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView
@@ -29,9 +32,10 @@ import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 
 @Composable
 fun WordTranslationScreen(
-    translationViewModel: TranslationViewModel,
-    soundViewModel: SoundViewModel
+
 ) {
+    val translationViewModel = getViewModel<TranslationViewModel>()
+    val soundViewModel = getViewModel<SoundViewModel>()
     val translationsState by translationViewModel.translationsState.collectAsState()
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
@@ -63,7 +67,7 @@ fun WordTranslationScreen(
                         TranslationItem(
                             item = it,
                             isExpanded = isExpanded,
-                            onClickItem = { word->
+                            onClickItem = { word ->
                                 isExpanded = !isExpanded
                                 translationViewModel.saveToHistory(word)
                             }

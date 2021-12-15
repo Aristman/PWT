@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain
+package ru.marslab.pocketwordtranslator.domain.repository
 
 import ru.marslab.pocketwordtranslator.domain.model.HistoryWord
 

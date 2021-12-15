@@ -9,7 +9,7 @@ object Versions {
     const val rxJavaVersion = "2.2.21"
     const val okHttpVersion = "5.0.0-alpha.3"
     const val hiltVersion = "2.40.3"
-    const val koinVersion = "3.1.2"
+    const val koinVersion = "3.1.4"
     const val exoPlayerVersion = "2.16.1"
     const val roomVersion = "2.3.0"
 }
