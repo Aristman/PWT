@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -73,7 +75,8 @@ private fun ExpandItem(
                 modifier = Modifier.size(80.dp),
                 imageModel = item.image,
                 contentScale = ContentScale.Crop,
-                circularReveal = CircularReveal(500)
+                circularReveal = CircularReveal(500),
+                loading = { CircularProgressIndicator(modifier = Modifier.align(Center)) }
             )
             Column(
                 Modifier
