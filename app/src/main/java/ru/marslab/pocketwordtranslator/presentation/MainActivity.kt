@@ -8,12 +8,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
-import dagger.hilt.android.AndroidEntryPoint
 import ru.marslab.pocketwordtranslator.presentation.screens.MainScreen
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
 
 @ExperimentalMaterialNavigationApi
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

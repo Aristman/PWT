@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
     kotlin("android")
     kotlin("plugin.serialization")
@@ -20,6 +19,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
         }
     }
 
@@ -56,6 +61,7 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
 }
 
 dependencies {
@@ -83,14 +89,10 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
-    //Hilt
-    implementation("com.google.dagger:hilt-android:${Versions.hiltVersion}")
-    annotationProcessor("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
-    kapt("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
-
     //Koin
-    implementation ("io.insert-koin:koin-core:${Versions.koinVersion}")
-    implementation ("io.insert-koin:koin-android:${Versions.koinVersion}")
+    implementation("io.insert-koin:koin-core:${Versions.koinVersion}")
+    implementation("io.insert-koin:koin-android:${Versions.koinVersion}")
+    implementation ("io.insert-koin:koin-androidx-compose:${Versions.koinVersion}")
 
     //Jetpack compose
     implementation("androidx.compose.ui:ui:${Versions.composeVersion}")
@@ -102,5 +104,12 @@ dependencies {
     //Accompanist
     implementation("com.google.accompanist:accompanist-navigation-material:${Versions.accompanistVersion}")
     //ExoPlayer
-    implementation ("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
+    implementation("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
+    //Room
+    implementation("androidx.room:room-runtime:${Versions.roomVersion}")
+    annotationProcessor("androidx.room:room-compiler:${Versions.roomVersion}")
+    kapt("androidx.room:room-compiler:${Versions.roomVersion}")
+    implementation("androidx.room:room-rxjava2:${Versions.roomVersion}")
+    //Glide
+    implementation("com.github.skydoves:landscapist-glide:${Versions.glideVersion}")
 }
