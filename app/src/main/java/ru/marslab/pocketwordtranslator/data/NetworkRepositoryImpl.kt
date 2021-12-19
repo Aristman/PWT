@@ -10,7 +10,6 @@ import ru.marslab.pocketwordtranslator.data.retrofit.PwtApi
 import ru.marslab.pocketwordtranslator.domain.model.Translations
 import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
 
-
 class NetworkRepositoryImpl(private val translateService: PwtApi) : NetworkRepository {
 
     override fun getTranslations(word: String): Observable<Translations> {

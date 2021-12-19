@@ -4,8 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import io.reactivex.Completable
-import io.reactivex.Observable
 import io.reactivex.Single
 import ru.marslab.pocketwordtranslator.data.model.HistoryWordDB
 

@@ -1,7 +1,6 @@
 package ru.marslab.pocketwordtranslator.domain.interactor
 
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import ru.marslab.pocketwordtranslator.data.room.MainDatabase
 import ru.marslab.pocketwordtranslator.data.toDomain

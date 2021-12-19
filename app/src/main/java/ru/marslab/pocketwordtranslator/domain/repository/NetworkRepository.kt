@@ -6,5 +6,5 @@ import ru.marslab.pocketwordtranslator.domain.model.Translations
 
 interface NetworkRepository {
     fun getTranslations(word: String): Observable<Translations>
-    fun getWordSound(url:String): BufferedSource?
+    fun getWordSound(url: String): BufferedSource?
 }

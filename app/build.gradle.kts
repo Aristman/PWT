@@ -50,7 +50,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.composeVersion
+        kotlinCompilerExtensionVersion = Versions.jetpackCompose
     }
     packagingOptions {
         resources {
@@ -61,55 +61,51 @@ android {
     kapt {
         correctErrorTypes = true
     }
-
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation(Dependencies.Jetpack.CORE)
+    implementation(Dependencies.Jetpack.CONSTRAINT_LAYOUT)
+    implementation(Dependencies.Jetpack.LIFECYCLE)
+    implementation(Dependencies.Jetpack.APPCOMPAT)
+    implementation(Dependencies.Ui.MATERIAL)
+    implementation(Dependencies.Jetpack.ACTIVITY)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    //Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KotlinSerializationVersion}")
-
-    //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}")
-    implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitVersion}")
-    implementation("com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}")
-    implementation("com.squareup.okhttp3:okhttp:${Versions.okHttpVersion}")
-
-    //RxJava2
-    implementation("io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-
-    //Koin
-    implementation("io.insert-koin:koin-core:${Versions.koinVersion}")
-    implementation("io.insert-koin:koin-android:${Versions.koinVersion}")
-    implementation ("io.insert-koin:koin-androidx-compose:${Versions.koinVersion}")
-
-    //Jetpack compose
-    implementation("androidx.compose.ui:ui:${Versions.composeVersion}")
-    implementation("androidx.compose.material:material:${Versions.composeVersion}")
-    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.composeVersion}")
-    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.composeVersion}")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:${Versions.composeVersion}")
-    //Accompanist
-    implementation("com.google.accompanist:accompanist-navigation-material:${Versions.accompanistVersion}")
-    //ExoPlayer
-    implementation("com.google.android.exoplayer:exoplayer:${Versions.exoPlayerVersion}")
-    //Room
-    implementation("androidx.room:room-runtime:${Versions.roomVersion}")
-    annotationProcessor("androidx.room:room-compiler:${Versions.roomVersion}")
-    kapt("androidx.room:room-compiler:${Versions.roomVersion}")
-    implementation("androidx.room:room-rxjava2:${Versions.roomVersion}")
-    //Glide
-    implementation("com.github.skydoves:landscapist-glide:${Versions.glideVersion}")
+    // Serialization
+    implementation(Dependencies.Serialization.KOTLIN_SERIALIZATION_JSON)
+    // Retrofit
+    implementation(Dependencies.Retrofit.CORE)
+    implementation(Dependencies.Retrofit.GSON_CONVERTER)
+    implementation(Dependencies.Retrofit.RXJAVA2)
+    // OkHttp
+    implementation(Dependencies.OkHttp.CORE)
+    implementation(Dependencies.OkHttp.LOGGER)
+    // RxJava2
+    implementation(Dependencies.RxJava2.CORE)
+    implementation(Dependencies.RxJava2.ANDROID)
+    // Koin
+    implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
+    implementation(Dependencies.Koin.ANDROID_COMPOSE)
+    // Jetpack compose
+    implementation(Dependencies.JetpackCompose.JC_UI)
+    implementation(Dependencies.JetpackCompose.JC_UI_PREVIEW)
+    implementation(Dependencies.JetpackCompose.JC_MATERIAL)
+    androidTestImplementation(Dependencies.JetpackCompose.JC_TEST_JUNIT)
+    debugImplementation(Dependencies.JetpackCompose.JC_UI_DEBUG)
+    debugImplementation(Dependencies.JetpackCompose.JC_UI_TEST_DEBUG)
+    // Accompanist
+    implementation(Dependencies.Accompanist.NAVIGATION)
+    // ExoPlayer
+    implementation(Dependencies.ExoPlayer.CORE)
+    // Room
+    implementation(Dependencies.Room.CORE)
+    annotationProcessor(Dependencies.Room.ANNOTATION_PROCESSOR)
+    kapt(Dependencies.Room.KAPT_COMPILER)
+    implementation(Dependencies.Room.RXJAVA2)
+    // Glide-jetpack-compose
+    implementation(Dependencies.Glide.JETPACK_COMPOSE)
 }

@@ -2,19 +2,19 @@ package ru.marslab.pocketwordtranslator.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.marslab.pocketwordtranslator.data.DatabaseRepositoryImpl
 import ru.marslab.pocketwordtranslator.data.FileRepositoryImpl
 import ru.marslab.pocketwordtranslator.data.NetworkRepositoryImpl
 import ru.marslab.pocketwordtranslator.data.okhttp.PwtOkHttp
 import ru.marslab.pocketwordtranslator.data.retrofit.PwtRetrofit
 import ru.marslab.pocketwordtranslator.data.room.PwtDatabase
-import ru.marslab.pocketwordtranslator.domain.repository.DatabaseRepository
-import ru.marslab.pocketwordtranslator.data.DatabaseRepositoryImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractorImpl
+import ru.marslab.pocketwordtranslator.domain.repository.DatabaseRepository
 import ru.marslab.pocketwordtranslator.domain.repository.FileRepository
 import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel

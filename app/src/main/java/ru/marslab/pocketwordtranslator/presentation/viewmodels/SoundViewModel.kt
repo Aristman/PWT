@@ -13,9 +13,9 @@ import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 
 private const val LOAD_SOUND_ERROR = "Не получен файл озвучки"
 
-class SoundViewModel (
+class SoundViewModel(
     private val soundInteractor: SoundInteractor
-) : ViewModel(){
+) : ViewModel() {
 
     private val _soundState = MutableStateFlow<AppViewState<Uri, Throwable>>(AppViewState.Init)
     val soundState: StateFlow<AppViewState<Uri, Throwable>> =

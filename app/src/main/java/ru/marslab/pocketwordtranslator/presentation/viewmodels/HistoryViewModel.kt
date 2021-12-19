@@ -12,7 +12,7 @@ import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
 import ru.marslab.pocketwordtranslator.presentation.toUi
 
-class HistoryViewModel (
+class HistoryViewModel(
     private val historyInteractor: HistoryInteractor
 ) : ViewModel() {
     private val _historyList =
