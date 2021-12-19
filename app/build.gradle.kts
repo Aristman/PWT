@@ -71,9 +71,9 @@ dependencies {
     implementation(Dependencies.Jetpack.APPCOMPAT)
     implementation(Dependencies.Ui.MATERIAL)
     implementation(Dependencies.Jetpack.ACTIVITY)
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(Dependencies.Test.JUNIT)
+    androidTestImplementation(Dependencies.Test.ANDROID_JUNIT)
+    androidTestImplementation(Dependencies.Test.ANDROID_ESPRESSO)
     // Serialization
     implementation(Dependencies.Serialization.KOTLIN_SERIALIZATION_JSON)
     // Retrofit

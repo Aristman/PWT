@@ -23,6 +23,12 @@ object Dependencies {
             "androidx.compose.ui:ui-test-manifest:${Versions.jetpackCompose}"
     }
 
+    object Test {
+        const val JUNIT = "junit:junit:${Versions.Test.junit}"
+        const val ANDROID_JUNIT = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
+        const val ANDROID_ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.Test.androidEspresso}"
+    }
+
     object Accompanist {
         const val NAVIGATION =
             "com.google.accompanist:accompanist-navigation-material:${Versions.accompanist}"

@@ -7,6 +7,12 @@ object Versions {
     const val constraintLayout = "2.1.2"
     const val lifecycle = "2.4.0"
 
+    object Test {
+        const val junit = "4.13.2"
+        const val androidJunit = "1.1.3"
+        const val androidEspresso = "3.4.0"
+    }
+
     const val kotlinSerialization = "1.3.1"
     const val gradle = "7.0.3"
     const val jetpackCompose = "1.1.0-beta01"
