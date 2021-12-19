@@ -64,7 +64,6 @@ android {
 }
 
 dependencies {
-
     implementation(Dependencies.Jetpack.CORE)
     implementation(Dependencies.Jetpack.CONSTRAINT_LAYOUT)
     implementation(Dependencies.Jetpack.LIFECYCLE)
@@ -108,4 +107,5 @@ dependencies {
     implementation(Dependencies.Room.RXJAVA2)
     // Glide-jetpack-compose
     implementation(Dependencies.Glide.JETPACK_COMPOSE)
+    implementation(project(":shared"))
 }

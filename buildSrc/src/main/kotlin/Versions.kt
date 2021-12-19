@@ -1,5 +1,5 @@
 object Versions {
-    const val kotlin = "1.5.20"
+    const val kotlin = "1.5.31"
     const val jetpackCore = "1.7.0"
     const val appcompat = "1.4.0"
     const val material = "1.4.0"

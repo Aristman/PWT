@@ -1,9 +1,9 @@
 package ru.marslab.pocketwordtranslator.presentation
 
-import ru.marslab.pocketwordtranslator.domain.model.HistoryWord
-import ru.marslab.pocketwordtranslator.domain.model.Translations
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
+import ru.marslab.shared.domain.model.HistoryWord
+import ru.marslab.shared.domain.model.Translations
 
 private const val BASE_SCHEME = "https:"
 

@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain.model
+package ru.marslab.shared.domain.model
 
 data class Translate(
     val id: Int,

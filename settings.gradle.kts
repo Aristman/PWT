@@ -7,3 +7,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Pocket Word Translator"
 include(":app")
+include(":shared")

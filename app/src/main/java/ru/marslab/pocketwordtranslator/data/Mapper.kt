@@ -2,9 +2,9 @@ package ru.marslab.pocketwordtranslator.data
 
 import ru.marslab.pocketwordtranslator.data.model.HistoryWordDB
 import ru.marslab.pocketwordtranslator.data.model.WordNW
-import ru.marslab.pocketwordtranslator.domain.model.HistoryWord
-import ru.marslab.pocketwordtranslator.domain.model.Translate
-import ru.marslab.pocketwordtranslator.domain.model.Translations
+import ru.marslab.shared.domain.model.HistoryWord
+import ru.marslab.shared.domain.model.Translate
+import ru.marslab.shared.domain.model.Translations
 import java.util.Date
 
 fun WordNW.toDomain(): Translations =
