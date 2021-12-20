@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain.repository
+package ru.marslab.shared.domain.repository
 
 import android.net.Uri
 import okio.BufferedSource

@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain.repository
+package ru.marslab.shared.domain.repository
 
 import io.reactivex.Observable
 import okio.BufferedSource

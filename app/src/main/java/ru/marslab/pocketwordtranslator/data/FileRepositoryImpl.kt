@@ -5,7 +5,7 @@ import android.net.Uri
 import okio.BufferedSource
 import okio.buffer
 import okio.sink
-import ru.marslab.pocketwordtranslator.domain.repository.FileRepository
+import ru.marslab.shared.domain.repository.FileRepository
 import java.io.File
 
 class FileRepositoryImpl(private val context: Context) : FileRepository {

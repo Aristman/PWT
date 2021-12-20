@@ -7,8 +7,8 @@ import okio.BufferedSource
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.inject
 import ru.marslab.pocketwordtranslator.data.retrofit.PwtApi
-import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
 import ru.marslab.shared.domain.model.Translations
+import ru.marslab.shared.domain.repository.NetworkRepository
 
 class NetworkRepositoryImpl(private val translateService: PwtApi) : NetworkRepository {
 

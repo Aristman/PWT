@@ -40,4 +40,9 @@ dependencies {
     testImplementation(Dependencies.Test.JUNIT)
     androidTestImplementation(Dependencies.Test.ANDROID_JUNIT)
     androidTestImplementation(Dependencies.Test.ANDROID_ESPRESSO)
+
+    implementation(Dependencies.OkHttp.CORE)
+    implementation(Dependencies.OkHttp.LOGGER)
+
+    implementation(Dependencies.RxJava2.CORE)
 }

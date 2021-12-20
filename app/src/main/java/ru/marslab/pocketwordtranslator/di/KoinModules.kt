@@ -14,12 +14,12 @@ import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractorImpl
-import ru.marslab.pocketwordtranslator.domain.repository.DatabaseRepository
-import ru.marslab.pocketwordtranslator.domain.repository.FileRepository
-import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
+import ru.marslab.shared.domain.repository.DatabaseRepository
+import ru.marslab.shared.domain.repository.FileRepository
+import ru.marslab.shared.domain.repository.NetworkRepository
 
 val okHttpModule = module {
     single { PwtOkHttp.createClient() }
