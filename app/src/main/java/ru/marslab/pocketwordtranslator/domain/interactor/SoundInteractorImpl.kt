@@ -1,6 +1,7 @@
 package ru.marslab.pocketwordtranslator.domain.interactor
 
 import android.net.Uri
+import ru.marslab.shared.domain.interactor.SoundInteractor
 import ru.marslab.shared.domain.repository.FileRepository
 import ru.marslab.shared.domain.repository.NetworkRepository
 

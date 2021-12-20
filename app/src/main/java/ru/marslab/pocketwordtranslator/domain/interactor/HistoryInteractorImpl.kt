@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import ru.marslab.pocketwordtranslator.data.room.MainDatabase
 import ru.marslab.pocketwordtranslator.data.toDomain
+import ru.marslab.shared.domain.interactor.HistoryInteractor
 import ru.marslab.shared.domain.model.HistoryWord
 
 class HistoryInteractorImpl(

@@ -1,6 +1,7 @@
 package ru.marslab.pocketwordtranslator.domain.interactor
 
 import io.reactivex.Observable
+import ru.marslab.shared.domain.interactor.TranslationInteractor
 import ru.marslab.shared.domain.model.HistoryWord
 import ru.marslab.shared.domain.model.Translations
 import ru.marslab.shared.domain.repository.DatabaseRepository

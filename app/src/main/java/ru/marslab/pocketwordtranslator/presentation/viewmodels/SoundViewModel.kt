@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
+import ru.marslab.shared.domain.interactor.SoundInteractor
 
 private const val LOAD_SOUND_ERROR = "Не получен файл озвучки"
 

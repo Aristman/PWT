@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain.interactor
+package ru.marslab.shared.domain.interactor
 
 import io.reactivex.Observable
 import ru.marslab.shared.domain.model.HistoryWord
