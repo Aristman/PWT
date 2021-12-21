@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.screens
+package ru.marslab.pocketwordtranslator.presentation.translation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,8 +20,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.getViewModel
 import ru.marslab.pocketwordtranslator.R
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 import ru.marslab.pocketwordtranslator.presentation.views.SearchWordDialog
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
@@ -32,7 +29,7 @@ import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 fun WordTranslationScreen(word: String?) {
     val translationViewModel = getViewModel<TranslationViewModel>()
     val soundViewModel = getViewModel<SoundViewModel>()
-    val translationsState by translationViewModel.translationsState.collectAsState()
+    val translationsState = translationViewModel.uiState
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
     if (isVisibleSearchDialog) {
@@ -41,7 +38,7 @@ fun WordTranslationScreen(word: String?) {
         }
     }
 
-    val soundState by soundViewModel.soundState.collectAsState()
+    val soundState = soundViewModel.uiState
     val (isVisibleSoundView, setVisibleSoundView) = remember { mutableStateOf(false) }
     if (isVisibleSoundView) {
         WordSoundDialog(

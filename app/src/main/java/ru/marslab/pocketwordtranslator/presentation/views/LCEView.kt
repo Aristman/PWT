@@ -13,14 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
+import ru.marslab.pocketwordtranslator.presentation.model.AppState
 
 private const val LOADING_ERROR = "Ошибка загрузки!"
 private const val REPEAT = "Повторить"
 
 @Composable
 fun <D, E> LCEView(
-    appViewState: AppViewState<D, E>,
+    appViewState: AppState<D, E>,
     initContent: (@Composable () -> Unit)? = null,
     loadingContent: (@Composable () -> Unit)? = null,
     errorContent: (@Composable (e: E) -> Unit)? = null,
@@ -28,24 +28,24 @@ fun <D, E> LCEView(
     mainContent: @Composable (data: D) -> Unit
 ) {
     when (appViewState) {
-        AppViewState.Init -> {
+        AppState.Init -> {
             initContent?.let { it() }
         }
-        is AppViewState.Error -> {
+        is AppState.Error -> {
             if (errorContent == null) {
                 DefaultErrorView(repeatLoading)
             } else {
                 errorContent(appViewState.error)
             }
         }
-        is AppViewState.Loading -> {
+        is AppState.Loading -> {
             if (loadingContent == null) {
                 DefaultLoadingContent()
             } else {
                 loadingContent()
             }
         }
-        is AppViewState.Success<D> -> {
+        is AppState.Success<D> -> {
             mainContent(appViewState.data)
         }
     }

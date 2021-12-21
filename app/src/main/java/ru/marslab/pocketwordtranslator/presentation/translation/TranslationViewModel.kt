@@ -1,50 +1,42 @@
-package ru.marslab.pocketwordtranslator.presentation.viewmodels
+package ru.marslab.pocketwordtranslator.presentation.translation
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
-import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.toDomainHistory
-import ru.marslab.pocketwordtranslator.presentation.toUi
+import ru.marslab.pocketwordtranslator.presentation.toUiState
+import ru.marslab.pocketwordtranslator.presentation.util.BaseComposeViewModel
 import ru.marslab.shared.domain.interactor.TranslationInteractor
 
 class TranslationViewModel(
     private val translationInteractor: TranslationInteractor
-) : ViewModel() {
+) : BaseComposeViewModel<List<TranslationUiState>, Throwable>() {
 
     private val disposableContainer = CompositeDisposable()
 
-    private val _translationsState =
-        MutableStateFlow<AppViewState<List<TranslateWordUi>, Throwable>>(AppViewState.Init)
-    val translationsState = _translationsState.asStateFlow()
-
     fun getTranslations(word: String) {
-        disposableContainer.addAll(
+        disposableContainer.add(
             translationInteractor.getData(word, fromRemoteSource = true)
                 .doOnSubscribe {
-                    _translationsState.tryEmit(AppViewState.Loading(null))
+                    setLoading()
                 }
                 .map {
-                    it.toUi()
+                    it.toUiState()
                 }
                 .toList()
                 .subscribe(
                     {
-                        _translationsState.tryEmit(AppViewState.Success(it))
+                        setSuccessful(it)
                     },
                     {
-                        _translationsState.tryEmit(AppViewState.Error(it))
+                        setError(it)
                     }
                 )
         )
     }
 
-    fun saveToHistory(word: TranslateWordUi) {
+    fun saveToHistory(word: TranslationUiState) {
         viewModelScope.launch(Dispatchers.IO) {
             translationInteractor.saveToHistory(word.toDomainHistory())
         }

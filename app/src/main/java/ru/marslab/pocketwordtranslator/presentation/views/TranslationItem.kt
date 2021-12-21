@@ -29,16 +29,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
-import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.theme.Shapes
 import ru.marslab.pocketwordtranslator.presentation.theme.Typography
+import ru.marslab.pocketwordtranslator.presentation.translation.TranslationUiState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TranslationItem(
-    item: TranslateWordUi,
+    item: TranslationUiState,
     isExpanded: Boolean,
-    onClickItem: (TranslateWordUi) -> Unit,
+    onClickItem: (TranslationUiState) -> Unit,
     onClickSound: (url: String) -> Unit
 ) {
     Card(
@@ -62,7 +62,7 @@ fun TranslationItem(
 
 @Composable
 private fun ExpandItem(
-    item: TranslateWordUi
+    item: TranslationUiState
 ) {
     Column(Modifier.fillMaxWidth()) {
         Row(
@@ -115,7 +115,7 @@ private fun ExpandItem(
 
 @Composable
 private fun CollapseItem(
-    item: TranslateWordUi
+    item: TranslationUiState
 ) {
     Column {
         Row(
@@ -159,7 +159,7 @@ fun ItemPreView() {
     )
 }
 
-private val mocaItem = TranslateWordUi(
+private val mocaItem = TranslationUiState(
     id = 1,
     word = "Test",
     translation = listOf("пример перевода Слова", "пример перевода Слова"),

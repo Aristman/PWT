@@ -17,12 +17,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.getViewModel
-import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
+import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
 import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel
 import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 
 @Composable
-fun HistoryScreen(onclickItem: (item: HistoryWordUi) -> Unit) {
+fun HistoryScreen(onclickItem: (item: HistoryUiState) -> Unit) {
     val historyViewModel = getViewModel<HistoryViewModel>()
     val historyState by historyViewModel.historyList.collectAsState()
     historyViewModel.loadHistory()
@@ -36,7 +36,7 @@ fun HistoryScreen(onclickItem: (item: HistoryWordUi) -> Unit) {
 }
 
 @Composable
-fun HistoryItem(item: HistoryWordUi, onclickItem: (item: HistoryWordUi) -> Unit) {
+fun HistoryItem(item: HistoryUiState, onclickItem: (item: HistoryUiState) -> Unit) {
     Card(
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
@@ -63,5 +63,5 @@ fun HistoryItem(item: HistoryWordUi, onclickItem: (item: HistoryWordUi) -> Unit)
 @Preview(showBackground = true)
 @Composable
 fun PreviewHistoryItem() {
-    HistoryItem(item = HistoryWordUi(1, "Test word")) {}
+    HistoryItem(item = HistoryUiState(1, "Test word")) {}
 }

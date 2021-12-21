@@ -7,35 +7,35 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
-import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
-import ru.marslab.pocketwordtranslator.presentation.toUi
+import ru.marslab.pocketwordtranslator.presentation.model.AppState
+import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
+import ru.marslab.pocketwordtranslator.presentation.toUiState
 import ru.marslab.shared.domain.interactor.HistoryInteractor
 
 class HistoryViewModel(
     private val historyInteractor: HistoryInteractor
 ) : ViewModel() {
     private val _historyList =
-        MutableStateFlow<AppViewState<List<HistoryWordUi>, Throwable>>(AppViewState.Init)
-    val historyList: StateFlow<AppViewState<List<HistoryWordUi>, Throwable>> =
+        MutableStateFlow<AppState<List<HistoryUiState>, Throwable>>(AppState.Init)
+    val historyList: StateFlow<AppState<List<HistoryUiState>, Throwable>> =
         _historyList.asStateFlow()
 
     fun loadHistory() {
         CoroutineScope(Dispatchers.IO).launch {
             historyInteractor.loadHistory()
                 .doOnSubscribe {
-                    _historyList.tryEmit(AppViewState.Loading(null))
+                    _historyList.tryEmit(AppState.Loading(null))
                 }
                 .map {
-                    it.toUi()
+                    it.toUiState()
                 }
                 .toList()
                 .subscribe(
                     {
-                        _historyList.tryEmit(AppViewState.Success(it))
+                        _historyList.tryEmit(AppState.Success(it))
                     },
                     {
-                        _historyList.tryEmit(AppViewState.Error(it))
+                        _historyList.tryEmit(AppState.Error(it))
                     }
                 )
         }
