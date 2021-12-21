@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.translation
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

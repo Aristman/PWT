@@ -1,39 +1,17 @@
-package ru.marslab.pocketwordtranslator.presentation.screens
+package ru.marslab.pocketwordtranslator.presentation.views
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.koin.androidx.compose.getViewModel
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel
-import ru.marslab.pocketwordtranslator.presentation.views.LCEView
-
-@Composable
-fun HistoryScreen(onclickItem: (item: HistoryUiState) -> Unit) {
-    val historyViewModel = getViewModel<HistoryViewModel>()
-    val historyState by historyViewModel.historyList.collectAsState()
-    historyViewModel.loadHistory()
-    LCEView(appViewState = historyState) { historyList ->
-        LazyColumn {
-            items(items = historyList) { item ->
-                HistoryItem(item, onclickItem)
-            }
-        }
-    }
-}
 
 @Composable
 fun HistoryItem(item: HistoryUiState, onclickItem: (item: HistoryUiState) -> Unit) {
@@ -58,10 +36,4 @@ fun HistoryItem(item: HistoryUiState, onclickItem: (item: HistoryUiState) -> Uni
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewHistoryItem() {
-    HistoryItem(item = HistoryUiState(1, "Test word")) {}
 }

@@ -29,9 +29,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.TranslationUiState
 import ru.marslab.pocketwordtranslator.presentation.theme.Shapes
 import ru.marslab.pocketwordtranslator.presentation.theme.Typography
-import ru.marslab.pocketwordtranslator.presentation.translation.TranslationUiState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

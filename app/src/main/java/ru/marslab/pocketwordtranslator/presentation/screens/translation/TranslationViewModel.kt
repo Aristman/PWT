@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.translation
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import androidx.lifecycle.viewModelScope
 import io.reactivex.disposables.CompositeDisposable
@@ -19,7 +19,7 @@ class TranslationViewModel(
         disposableContainer.add(
             translationInteractor.getData(word, fromRemoteSource = true)
                 .doOnSubscribe {
-                    setLoading()
+                    setLoadingState()
                 }
                 .map {
                     it.toUiState()
@@ -27,10 +27,10 @@ class TranslationViewModel(
                 .toList()
                 .subscribe(
                     {
-                        setSuccessful(it)
+                        setSuccessfulState(it)
                     },
                     {
-                        setError(it)
+                        setErrorState(it)
                     }
                 )
         )

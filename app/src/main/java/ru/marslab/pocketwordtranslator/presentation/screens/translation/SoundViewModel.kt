@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.translation
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
@@ -16,15 +16,13 @@ class SoundViewModel(
     fun getWordSound(url: String, word: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                setLoading()
-                val wordSound = soundInteractor.getWordSound(url, word)
-                if (wordSound != null) {
-                    setSuccessful(wordSound)
-                } else {
-                    setError(Throwable(LOAD_SOUND_ERROR))
+                setLoadingState()
+                soundInteractor.getWordSound(url, word)?.let {
+                    setSuccessfulState(it)
                 }
+                    ?: setErrorState(Throwable(LOAD_SOUND_ERROR))
             } catch (e: Exception) {
-                setError(e)
+                setErrorState(e)
             }
         }
     }

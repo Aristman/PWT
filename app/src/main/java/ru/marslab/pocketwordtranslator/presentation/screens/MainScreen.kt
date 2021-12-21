@@ -20,8 +20,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.presentation.screens.history.HistoryScreen
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.WordTranslationScreen
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
-import ru.marslab.pocketwordtranslator.presentation.translation.WordTranslationScreen
 
 sealed class NavGraph(
     val route: String,

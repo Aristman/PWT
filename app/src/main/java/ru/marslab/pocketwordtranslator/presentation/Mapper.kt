@@ -1,7 +1,7 @@
 package ru.marslab.pocketwordtranslator.presentation
 
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
-import ru.marslab.pocketwordtranslator.presentation.translation.TranslationUiState
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.TranslationUiState
 import ru.marslab.shared.domain.model.HistoryWord
 import ru.marslab.shared.domain.model.Translations
 

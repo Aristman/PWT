@@ -12,7 +12,7 @@ interface HistoryDao {
     @Insert(onConflict = REPLACE)
     fun addWord(word: HistoryWordDB)
 
-    @Query("SELECT * FROM history_words ORDER BY save_time")
+    @Query("SELECT * FROM history_words ORDER BY save_time DESC")
     fun getHistory(): Single<List<HistoryWordDB>>
 
     @Query("DELETE FROM history_words")

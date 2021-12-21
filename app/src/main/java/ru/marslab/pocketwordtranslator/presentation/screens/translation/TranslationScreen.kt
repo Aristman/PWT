@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.translation
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -29,7 +29,6 @@ import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 fun WordTranslationScreen(word: String?) {
     val translationViewModel = getViewModel<TranslationViewModel>()
     val soundViewModel = getViewModel<SoundViewModel>()
-    val translationsState = translationViewModel.uiState
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
     if (isVisibleSearchDialog) {
@@ -38,11 +37,10 @@ fun WordTranslationScreen(word: String?) {
         }
     }
 
-    val soundState = soundViewModel.uiState
     val (isVisibleSoundView, setVisibleSoundView) = remember { mutableStateOf(false) }
     if (isVisibleSoundView) {
         WordSoundDialog(
-            soundState,
+            soundViewModel.uiState,
             setVisibleSoundView
         )
     }
@@ -50,7 +48,7 @@ fun WordTranslationScreen(word: String?) {
     word?.let { translationViewModel.getTranslations(it) }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
-        LCEView(appViewState = translationsState) { data ->
+        LCEView(appViewState = translationViewModel.uiState) { data ->
             Box {
                 LazyColumn(
                     modifier = Modifier

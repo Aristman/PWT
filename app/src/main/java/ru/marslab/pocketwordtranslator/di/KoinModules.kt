@@ -11,9 +11,9 @@ import ru.marslab.pocketwordtranslator.data.room.PwtDatabase
 import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.SoundInteractorImpl
 import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractorImpl
-import ru.marslab.pocketwordtranslator.presentation.translation.SoundViewModel
-import ru.marslab.pocketwordtranslator.presentation.translation.TranslationViewModel
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.HistoryViewModel
+import ru.marslab.pocketwordtranslator.presentation.screens.history.HistoryViewModel
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.SoundViewModel
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.TranslationViewModel
 import ru.marslab.shared.domain.interactor.HistoryInteractor
 import ru.marslab.shared.domain.interactor.SoundInteractor
 import ru.marslab.shared.domain.interactor.TranslationInteractor
