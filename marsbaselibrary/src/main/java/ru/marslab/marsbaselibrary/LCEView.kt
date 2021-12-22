@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.views
+package ru.marslab.marsbaselibrary
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.marslab.pocketwordtranslator.presentation.model.AppState
+import ru.marslab.marsbaselibrary.AppState.Error
+import ru.marslab.marsbaselibrary.AppState.Init
+import ru.marslab.marsbaselibrary.AppState.Loading
+import ru.marslab.marsbaselibrary.AppState.Success
 
 private const val LOADING_ERROR = "Ошибка загрузки!"
 private const val REPEAT = "Повторить"
@@ -22,30 +25,30 @@ private const val REPEAT = "Повторить"
 fun <D, E> LCEView(
     appViewState: AppState<D, E>,
     initContent: (@Composable () -> Unit)? = null,
-    loadingContent: (@Composable () -> Unit)? = null,
+    loadingContent: (@Composable (progress: Float?) -> Unit)? = null,
     errorContent: (@Composable (e: E) -> Unit)? = null,
     repeatLoading: (() -> Unit)? = null,
     mainContent: @Composable (data: D) -> Unit
 ) {
     when (appViewState) {
-        AppState.Init -> {
+        Init -> {
             initContent?.let { it() }
         }
-        is AppState.Error -> {
+        is Error -> {
             if (errorContent == null) {
                 DefaultErrorView(repeatLoading)
             } else {
                 errorContent(appViewState.error)
             }
         }
-        is AppState.Loading -> {
+        is Loading -> {
             if (loadingContent == null) {
                 DefaultLoadingContent()
             } else {
-                loadingContent()
+                loadingContent(appViewState.progress)
             }
         }
-        is AppState.Success<D> -> {
+        is Success -> {
             mainContent(appViewState.data)
         }
     }

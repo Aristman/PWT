@@ -5,9 +5,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.getViewModel
+import ru.marslab.marsbaselibrary.LCEView
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
 import ru.marslab.pocketwordtranslator.presentation.views.HistoryItem
-import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 
 @Composable
 fun HistoryScreen(onclickItem: (item: HistoryUiState) -> Unit) {

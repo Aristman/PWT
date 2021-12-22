@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.getViewModel
+import ru.marslab.marsbaselibrary.LCEView
 import ru.marslab.pocketwordtranslator.R
-import ru.marslab.pocketwordtranslator.presentation.views.LCEView
 import ru.marslab.pocketwordtranslator.presentation.views.SearchWordDialog
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
 import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog

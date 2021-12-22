@@ -4,9 +4,9 @@ import androidx.lifecycle.viewModelScope
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.marslab.marsbaselibrary.BaseComposeViewModel
 import ru.marslab.pocketwordtranslator.presentation.toDomainHistory
 import ru.marslab.pocketwordtranslator.presentation.toUiState
-import ru.marslab.pocketwordtranslator.presentation.util.BaseComposeViewModel
 import ru.marslab.shared.domain.interactor.TranslationInteractor
 
 class TranslationViewModel(

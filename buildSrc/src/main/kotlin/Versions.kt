@@ -15,8 +15,8 @@ object Versions {
 
     const val kotlinSerialization = "1.3.1"
     const val gradle = "7.0.3"
-    const val jetpackCompose = "1.1.0-beta01"
-    const val accompanist = "0.21.3-beta"
+    const val jetpackCompose = "1.0.5"
+    const val accompanist = "0.22.0-rc"
 
     const val retrofit = "2.9.0"
     const val rxJava = "2.2.21"
@@ -25,7 +25,7 @@ object Versions {
     const val hilt = "2.40.3"
     const val koin = "3.1.4"
     const val exoPlayer = "2.16.1"
-    const val room = "2.3.0"
+    const val room = "2.4.0"
     const val glide = "4.12.0"
     const val glideJC = "1.4.4"
 }
