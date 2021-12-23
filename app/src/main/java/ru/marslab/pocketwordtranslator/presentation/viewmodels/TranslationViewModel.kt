@@ -7,11 +7,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.domain.interactor.TranslationInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
 import ru.marslab.pocketwordtranslator.presentation.toDomainHistory
 import ru.marslab.pocketwordtranslator.presentation.toUi
+import ru.marslab.shared.domain.interactor.TranslationInteractor
 
 class TranslationViewModel(
     private val translationInteractor: TranslationInteractor

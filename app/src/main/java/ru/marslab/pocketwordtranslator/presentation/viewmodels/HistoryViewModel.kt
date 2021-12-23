@@ -7,12 +7,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.marslab.pocketwordtranslator.domain.interactor.HistoryInteractor
 import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
 import ru.marslab.pocketwordtranslator.presentation.toUi
+import ru.marslab.shared.domain.interactor.HistoryInteractor
 
-class HistoryViewModel (
+class HistoryViewModel(
     private val historyInteractor: HistoryInteractor
 ) : ViewModel() {
     private val _historyList =

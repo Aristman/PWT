@@ -43,9 +43,10 @@ fun HistoryItem(item: HistoryWordUi, onclickItem: (item: HistoryWordUi) -> Unit)
             .padding(2.dp),
         elevation = 2.dp,
     ) {
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onclickItem(item) }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onclickItem(item) }
         ) {
             Text(
                 text = item.word,
@@ -58,7 +59,6 @@ fun HistoryItem(item: HistoryWordUi, onclickItem: (item: HistoryWordUi) -> Unit)
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

@@ -81,7 +81,8 @@ private fun MainBottomBar(navController: NavHostController) {
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                 onClick = {
                     navController.navigate(screen.route)
-                })
+                }
+            )
         }
     }
 }
@@ -95,10 +96,12 @@ private fun MainNavHost(navController: NavHostController, modifier: Modifier) {
     ) {
         composable(
             "${Destinations.Translator.route}?$WORD={$WORD}",
-            arguments = listOf(navArgument(WORD) {
-                nullable = true
-                type = NavType.StringType
-            })
+            arguments = listOf(
+                navArgument(WORD) {
+                    nullable = true
+                    type = NavType.StringType
+                }
+            )
         ) {
             WordTranslationScreen(it.arguments?.getString(WORD))
         }
@@ -109,4 +112,3 @@ private fun MainNavHost(navController: NavHostController, modifier: Modifier) {
         }
     }
 }
-

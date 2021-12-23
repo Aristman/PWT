@@ -10,7 +10,6 @@ import ru.marslab.pocketwordtranslator.di.repositoryModule
 import ru.marslab.pocketwordtranslator.di.retrofitModule
 import ru.marslab.pocketwordtranslator.di.viewModelModule
 
-
 class App : Application() {
 
     override fun onCreate() {
@@ -27,5 +26,4 @@ class App : Application() {
             )
         }
     }
-
 }

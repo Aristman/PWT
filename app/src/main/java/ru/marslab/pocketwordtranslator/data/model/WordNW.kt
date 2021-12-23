@@ -1,6 +1,5 @@
 package ru.marslab.pocketwordtranslator.data.model
 
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

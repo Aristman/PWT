@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TranslateWordUi(
-    val id : Int,
+    val id: Int,
     val word: String,
     val translation: List<String>,
     val image: String,

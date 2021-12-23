@@ -1,8 +1,9 @@
 package ru.marslab.pocketwordtranslator.domain.interactor
 
 import android.net.Uri
-import ru.marslab.pocketwordtranslator.domain.repository.FileRepository
-import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
+import ru.marslab.shared.domain.interactor.SoundInteractor
+import ru.marslab.shared.domain.repository.FileRepository
+import ru.marslab.shared.domain.repository.NetworkRepository
 
 class SoundInteractorImpl(
     private val networkRepository: NetworkRepository,
@@ -15,4 +16,3 @@ class SoundInteractorImpl(
         return source?.let { fileRepository.saveFileToCache(filename, it) }
     }
 }
-

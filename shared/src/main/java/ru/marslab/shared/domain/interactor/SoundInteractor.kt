@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.domain.interactor
+package ru.marslab.shared.domain.interactor
 
 import android.net.Uri
 

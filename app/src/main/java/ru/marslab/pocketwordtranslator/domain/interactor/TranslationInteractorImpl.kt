@@ -1,11 +1,11 @@
 package ru.marslab.pocketwordtranslator.domain.interactor
 
 import io.reactivex.Observable
-import ru.marslab.pocketwordtranslator.domain.repository.DatabaseRepository
-import ru.marslab.pocketwordtranslator.domain.model.Translations
-import ru.marslab.pocketwordtranslator.domain.model.HistoryWord
-import ru.marslab.pocketwordtranslator.domain.repository.NetworkRepository
-
+import ru.marslab.shared.domain.interactor.TranslationInteractor
+import ru.marslab.shared.domain.model.HistoryWord
+import ru.marslab.shared.domain.model.Translations
+import ru.marslab.shared.domain.repository.DatabaseRepository
+import ru.marslab.shared.domain.repository.NetworkRepository
 
 class TranslationInteractorImpl(
     private val networkRepository: NetworkRepository,

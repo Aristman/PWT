@@ -53,9 +53,9 @@ fun WordSoundDialog(
                                 ViewGroup.LayoutParams.MATCH_PARENT
                             )
                         }
-                    })
+                    }
+                )
             }
         }
     }
 }
-

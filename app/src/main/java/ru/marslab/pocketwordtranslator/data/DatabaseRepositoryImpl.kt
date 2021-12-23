@@ -1,9 +1,8 @@
 package ru.marslab.pocketwordtranslator.data
 
 import ru.marslab.pocketwordtranslator.data.room.MainDatabase
-import ru.marslab.pocketwordtranslator.data.toHistoryDB
-import ru.marslab.pocketwordtranslator.domain.model.HistoryWord
-import ru.marslab.pocketwordtranslator.domain.repository.DatabaseRepository
+import ru.marslab.shared.domain.model.HistoryWord
+import ru.marslab.shared.domain.repository.DatabaseRepository
 
 class DatabaseRepositoryImpl(
     database: MainDatabase
