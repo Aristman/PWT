@@ -1,10 +1,10 @@
-package ru.marslab.pocketwordtranslator.presentation.model
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class TranslateWordUi(
+data class TranslationUiState(
     val id: Int,
     val word: String,
     val translation: List<String>,

@@ -18,11 +18,11 @@ import androidx.compose.ui.window.Dialog
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.PlayerView
-import ru.marslab.pocketwordtranslator.presentation.model.AppViewState
+import ru.marslab.marsbaselibrary.LCEView
 
 @Composable
 fun WordSoundDialog(
-    soundState: AppViewState<Uri, Throwable>,
+    soundState: ru.marslab.marsbaselibrary.AppState<Uri, Throwable>,
     setVisible: (Boolean) -> Unit
 ) {
     val context = LocalContext.current

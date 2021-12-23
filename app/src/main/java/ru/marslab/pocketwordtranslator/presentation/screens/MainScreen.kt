@@ -8,46 +8,46 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.presentation.screens.history.HistoryScreen
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.WordTranslationScreen
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
 
-sealed class Destinations(
+sealed class NavGraph(
     val route: String,
     val label: String,
     @DrawableRes val icon: Int
 ) {
     object Translator :
-        Destinations(
+        NavGraph(
             route = "Translator",
             label = "Translator",
             icon = R.drawable.ic_baseline_translate_24
         )
 
     object History :
-        Destinations(
+        NavGraph(
             route = "History",
             label = "History",
             icon = R.drawable.ic_baseline_history_24
         )
 }
 
-internal val screens = listOf(
-    Destinations.Translator,
-    Destinations.History
+internal val buttonTabs = listOf(
+    NavGraph.Translator,
+    NavGraph.History
 )
-
-private const val WORD = "word"
 
 @ExperimentalMaterialNavigationApi
 @Composable
@@ -69,7 +69,7 @@ private fun MainBottomBar(navController: NavHostController) {
     BottomNavigation {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
-        screens.forEach { screen ->
+        buttonTabs.forEach { screen ->
             BottomNavigationItem(
                 icon = {
                     Icon(
@@ -79,6 +79,9 @@ private fun MainBottomBar(navController: NavHostController) {
                 },
                 label = { screen.label },
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                modifier = Modifier,
+                selectedContentColor = Color.Black,
+                unselectedContentColor = Color.Yellow,
                 onClick = {
                     navController.navigate(screen.route)
                 }
@@ -89,25 +92,20 @@ private fun MainBottomBar(navController: NavHostController) {
 
 @Composable
 private fun MainNavHost(navController: NavHostController, modifier: Modifier) {
+    var searchWord = remember<String?> { null }
     NavHost(
         navController = navController,
-        startDestination = Destinations.History.route,
+        startDestination = NavGraph.Translator.route,
         modifier = modifier
     ) {
-        composable(
-            "${Destinations.Translator.route}?$WORD={$WORD}",
-            arguments = listOf(
-                navArgument(WORD) {
-                    nullable = true
-                    type = NavType.StringType
-                }
-            )
-        ) {
-            WordTranslationScreen(it.arguments?.getString(WORD))
+        composable(NavGraph.Translator.route) {
+            WordTranslationScreen(searchWord)
+            searchWord = null
         }
-        composable(Destinations.History.route) {
+        composable(NavGraph.History.route) {
             HistoryScreen() {
-                navController.navigate("${Destinations.Translator.route}?$WORD=${it.word}")
+                searchWord = it.word
+                navController.navigate(NavGraph.Translator.route)
             }
         }
     }

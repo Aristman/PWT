@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-parcelize")
+    id("com.github.ben-manes.versions") version "0.39.0" // ./gradlew dependencyUpdates
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
@@ -108,4 +109,5 @@ dependencies {
     // Glide-jetpack-compose
     implementation(Dependencies.Glide.JETPACK_COMPOSE)
     implementation(project(":shared"))
+    implementation(project(":marsbaselibrary"))
 }

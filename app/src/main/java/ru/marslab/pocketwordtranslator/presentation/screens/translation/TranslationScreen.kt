@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.screens
+package ru.marslab.pocketwordtranslator.presentation.screens.translation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,20 +18,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.getKoin
+import org.koin.core.qualifier.named
+import ru.marslab.marsbaselibrary.LCEView
 import ru.marslab.pocketwordtranslator.R
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.SoundViewModel
-import ru.marslab.pocketwordtranslator.presentation.viewmodels.TranslationViewModel
-import ru.marslab.pocketwordtranslator.presentation.views.LCEView
+import ru.marslab.pocketwordtranslator.di.KoinConstants
 import ru.marslab.pocketwordtranslator.presentation.views.SearchWordDialog
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
 import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 
 @Composable
 fun WordTranslationScreen(word: String?) {
-    val translationViewModel = getViewModel<TranslationViewModel>()
-    val soundViewModel = getViewModel<SoundViewModel>()
-    val translationsState by translationViewModel.translationsState.collectAsState()
+    val translationScope =
+        getKoin().getOrCreateScope(
+            KoinConstants.TRANSLATION_SCOPE,
+            named(KoinConstants.TRANSLATION_SCOPE)
+        )
+    val translationViewModel: TranslationViewModel by translationScope.inject()
+    val soundViewModel: SoundViewModel by translationScope.inject()
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
     if (isVisibleSearchDialog) {
@@ -41,11 +44,10 @@ fun WordTranslationScreen(word: String?) {
         }
     }
 
-    val soundState by soundViewModel.soundState.collectAsState()
     val (isVisibleSoundView, setVisibleSoundView) = remember { mutableStateOf(false) }
     if (isVisibleSoundView) {
         WordSoundDialog(
-            soundState,
+            soundViewModel.uiState,
             setVisibleSoundView
         )
     }
@@ -53,7 +55,7 @@ fun WordTranslationScreen(word: String?) {
     word?.let { translationViewModel.getTranslations(it) }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
-        LCEView(appViewState = translationsState) { data ->
+        LCEView(appViewState = translationViewModel.uiState) { data ->
             Box {
                 LazyColumn(
                     modifier = Modifier

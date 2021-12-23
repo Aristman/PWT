@@ -1,14 +1,14 @@
 package ru.marslab.pocketwordtranslator.presentation
 
-import ru.marslab.pocketwordtranslator.presentation.model.HistoryWordUi
-import ru.marslab.pocketwordtranslator.presentation.model.TranslateWordUi
+import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
+import ru.marslab.pocketwordtranslator.presentation.screens.translation.TranslationUiState
 import ru.marslab.shared.domain.model.HistoryWord
 import ru.marslab.shared.domain.model.Translations
 
 private const val BASE_SCHEME = "https:"
 
-fun Translations.toUi(): TranslateWordUi =
-    TranslateWordUi(
+fun Translations.toUiState(): TranslationUiState =
+    TranslationUiState(
         id = id,
         word = originalWord,
         translation = translations.map { it.translation },
@@ -18,14 +18,14 @@ fun Translations.toUi(): TranslateWordUi =
         transcription = translations.first().transcription
     )
 
-fun TranslateWordUi.toDomainHistory(): HistoryWord =
+fun TranslationUiState.toDomainHistory(): HistoryWord =
     HistoryWord(
         id = id,
         word = word
     )
 
-fun HistoryWord.toUi(): HistoryWordUi =
-    HistoryWordUi(
+fun HistoryWord.toUiState(): HistoryUiState =
+    HistoryUiState(
         id = id,
         word = word
     )
