@@ -6,11 +6,11 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -77,11 +77,10 @@ private fun MainBottomBar(navController: NavHostController) {
                         contentDescription = null
                     )
                 },
-                label = { screen.label },
+                label = { Text(text = screen.label) },
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                 modifier = Modifier,
-                selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Yellow,
+                alwaysShowLabel = false,
                 onClick = {
                     navController.navigate(screen.route)
                 }
