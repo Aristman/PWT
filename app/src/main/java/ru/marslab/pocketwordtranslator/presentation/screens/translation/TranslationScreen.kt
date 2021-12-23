@@ -18,17 +18,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.getKoin
+import org.koin.core.qualifier.named
 import ru.marslab.marsbaselibrary.LCEView
 import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.di.KoinConstants
 import ru.marslab.pocketwordtranslator.presentation.views.SearchWordDialog
 import ru.marslab.pocketwordtranslator.presentation.views.TranslationItem
 import ru.marslab.pocketwordtranslator.presentation.views.WordSoundDialog
 
 @Composable
 fun WordTranslationScreen(word: String?) {
-    val translationViewModel = getViewModel<TranslationViewModel>()
-    val soundViewModel = getViewModel<SoundViewModel>()
+    val translationScope =
+        getKoin().getOrCreateScope(
+            KoinConstants.TRANSLATION_SCOPE,
+            named(KoinConstants.TRANSLATION_SCOPE)
+        )
+    val translationViewModel: TranslationViewModel by translationScope.inject()
+    val soundViewModel: SoundViewModel by translationScope.inject()
 
     val (isVisibleSearchDialog, setVisibleSearchDialog) = remember { mutableStateOf(false) }
     if (isVisibleSearchDialog) {

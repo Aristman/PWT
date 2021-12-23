@@ -1,6 +1,7 @@
 package ru.marslab.pocketwordtranslator.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import ru.marslab.pocketwordtranslator.data.DatabaseRepositoryImpl
 import ru.marslab.pocketwordtranslator.data.FileRepositoryImpl
@@ -41,24 +42,30 @@ val repositoryModule = module {
     single<DatabaseRepository> { DatabaseRepositoryImpl(database = get()) }
 }
 
-val interactorModule = module {
-    single<TranslationInteractor> {
-        TranslationInteractorImpl(
-            networkRepository = get(),
-            databaseRepository = get()
-        )
+val translationScreen = module {
+    scope(named(KoinConstants.TRANSLATION_SCOPE)) {
+        scoped<TranslationInteractor> {
+            TranslationInteractorImpl(
+                networkRepository = get(),
+                databaseRepository = get()
+            )
+        }
+        scoped<SoundInteractor> {
+            SoundInteractorImpl(
+                networkRepository = get(),
+                fileRepository = get()
+            )
+        }
+        viewModel { TranslationViewModel(translationInteractor = get()) }
+        viewModel { SoundViewModel(soundInteractor = get()) }
     }
-    single<SoundInteractor> {
-        SoundInteractorImpl(
-            networkRepository = get(),
-            fileRepository = get()
-        )
-    }
-    single<HistoryInteractor> { HistoryInteractorImpl(database = get()) }
 }
 
-val viewModelModule = module {
-    viewModel { HistoryViewModel(historyInteractor = get()) }
-    viewModel { SoundViewModel(soundInteractor = get()) }
-    viewModel { TranslationViewModel(translationInteractor = get()) }
+val historyScreen = module {
+    scope(named(KoinConstants.HISTORY_SCOPE)) {
+        scoped<HistoryInteractor> {
+            HistoryInteractorImpl(database = get())
+        }
+        viewModel { HistoryViewModel(historyInteractor = get()) }
+    }
 }
