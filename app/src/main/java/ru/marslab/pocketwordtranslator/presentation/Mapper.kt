@@ -29,3 +29,9 @@ fun HistoryWord.toUiState(): HistoryUiState =
         id = id,
         word = word
     )
+
+fun HistoryUiState.toDomain(): HistoryWord =
+    HistoryWord(
+        id = id,
+        word = word
+    )

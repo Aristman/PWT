@@ -1,6 +1,7 @@
 package ru.marslab.pocketwordtranslator.data.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
@@ -17,4 +18,7 @@ interface HistoryDao {
 
     @Query("DELETE FROM history_words")
     fun clearHistory()
+
+    @Delete
+    fun deleteWord(word: HistoryWordDB)
 }
