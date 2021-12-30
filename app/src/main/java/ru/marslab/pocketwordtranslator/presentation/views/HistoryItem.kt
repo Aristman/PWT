@@ -4,6 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.material.DismissValue.Default
 import androidx.compose.material.DismissValue.DismissedToEnd
 import androidx.compose.material.DismissValue.DismissedToStart
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -31,11 +33,11 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.marslab.pocketwordtranslator.R.drawable
 import ru.marslab.pocketwordtranslator.presentation.model.HistoryUiState
-
-private const val DELETE_WORD_DELAY = 3000L
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -44,8 +46,8 @@ fun HistoryItem(
     onclickItem: (item: HistoryUiState) -> Unit,
     onDeleteItem: (item: HistoryUiState) -> Unit
 ) {
-    val dismissState = rememberDismissState()
     val scope = rememberCoroutineScope()
+    val dismissState = rememberDismissState()
     SwipeToDismiss(
         state = dismissState,
         directions = setOf(EndToStart),
@@ -60,37 +62,35 @@ fun HistoryItem(
             val scale by animateFloatAsState(
                 if (dismissState.targetValue == Default) 0.5f else 1f
             )
-            if (dismissState.isDismissed(EndToStart)) {
-                LaunchedEffect(key1 = true) {
-                    scope.launch {
-                        dismissState.reset()
-                        onDeleteItem(item)
-                    }
-                }
-            }
-            Box(
+            Row(
                 Modifier
                     .fillMaxSize()
                     .background(color)
                     .padding(horizontal = 20.dp),
-                contentAlignment = Alignment.CenterEnd
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End
             ) {
-                Row {
+                IconButton(onClick = {
+                    scope.launch {
+                        onDeleteItem(item)
+                        dismissState.reset()
+                    }
+                }) {
                     Icon(
                         painterResource(id = drawable.ic_baseline_delete_sweep_24),
                         contentDescription = "Localized description",
                         modifier = Modifier.scale(scale)
                     )
-                    IconButton(onClick = {
-                        scope.launch {
-                            dismissState.reset()
-                        }
-                    }) {
-                        Icon(
-                            painter = painterResource(id = drawable.ic_baseline_undo_24),
-                            contentDescription = null
-                        )
+                }
+                IconButton(onClick = {
+                    scope.launch {
+                        dismissState.reset()
                     }
+                }) {
+                    Icon(
+                        painter = painterResource(id = drawable.ic_baseline_undo_24),
+                        contentDescription = null
+                    )
                 }
             }
         }
