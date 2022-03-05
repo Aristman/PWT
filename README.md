@@ -27,3 +27,6 @@ Android"
 
 <b>Accompanist</b>
 
+# Архитектурный паттерн
+
+<b>MVVM</b>
