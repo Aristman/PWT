@@ -29,11 +29,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ru.marslab.pocketwordtranslator.presentation.screens.translation.TranslationUiState
 import ru.marslab.pocketwordtranslator.presentation.theme.Shapes
 import ru.marslab.pocketwordtranslator.presentation.theme.Typography
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalCoroutinesApi::class,
+    androidx.compose.foundation.ExperimentalFoundationApi::class
+)
 @Composable
 fun TranslationItem(
     item: TranslationUiState,
