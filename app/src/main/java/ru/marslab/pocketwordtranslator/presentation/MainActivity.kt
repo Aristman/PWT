@@ -8,19 +8,12 @@ import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Modifier
 import androidx.core.animation.doOnEnd
-import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import ru.marslab.pocketwordtranslator.R.style
-import ru.marslab.pocketwordtranslator.presentation.screens.MainScreen
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
 
 private const val ANIMATE_DURATION = 2000L
 
-@ExperimentalMaterialNavigationApi
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +21,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PocketWordTranslatorTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    MainScreen()
-                }
             }
         }
     }

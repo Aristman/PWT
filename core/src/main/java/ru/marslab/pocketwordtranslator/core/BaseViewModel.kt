@@ -50,6 +50,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
         widgets.forEach { widget ->
             launch {
                 widget.action.collect { widgetAction ->
+                    @Suppress("UNCHECKED_CAST")
                     (widgetAction as? AC)?.let {
                         sendAction(it)
                     }
