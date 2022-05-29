@@ -21,6 +21,10 @@ object Dependencies {
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
         const val serialization =
             "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinSerialization}"
+        const val serializationJson =
+            "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinSerialization}"
+        const val dateTime =
+            "org.jetbrains.kotlinx:kotlinx-datetime:${Versions.kotlinDateTime}"
     }
 
     object JetpackCompose {

@@ -41,6 +41,7 @@ object Versions {
     const val kotlin = "1.6.21"
     const val kotlinSerialization = "1.3.3"
     const val kotlinCoroutines = "1.6.0-native-mt"
+    const val kotlinDateTime = "0.3.1"
     const val secretGradlePlugin = "2.0.1"
     const val jetpackCore = "1.7.0"
     const val appcompat = "1.4.1"

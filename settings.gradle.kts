@@ -2,6 +2,7 @@
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
     }
@@ -9,3 +10,4 @@ dependencyResolutionManagement {
 rootProject.name = "Pocket Word Translator"
 include(":app")
 include(":core")
+include(":shared")
