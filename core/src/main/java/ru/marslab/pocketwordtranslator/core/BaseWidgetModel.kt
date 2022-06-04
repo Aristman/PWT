@@ -7,15 +7,15 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-abstract class BaseWidgetModel<D>(initValue: D) {
+abstract class BaseWidgetModel<D, AC : Action>(initValue: D) {
     private val _state = MutableStateFlow(initValue)
     val state: StateFlow<D> = _state.asStateFlow()
 
-    private val _action = MutableSharedFlow<Action>(extraBufferCapacity = 1)
-    val action: SharedFlow<Action>
+    private val _action = MutableSharedFlow<AC>(extraBufferCapacity = 1)
+    val action: SharedFlow<AC>
         get() = _action.asSharedFlow()
 
-    infix fun sendAction(action: Action) {
+    infix fun sendAction(action: AC) {
         _action.tryEmit(action)
     }
 

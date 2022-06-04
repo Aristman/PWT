@@ -46,15 +46,10 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
             .stateIn(viewModelScope, SharingStarted.Eagerly, initState)
     }
 
-    protected fun collectWidgetsActions(vararg widgets: BaseWidgetModel<*>) {
+    protected fun collectWidgetsActions(vararg widgets: BaseWidgetModel<*, AC>) {
         widgets.forEach { widget ->
             launch {
-                widget.action.collect { widgetAction ->
-                    @Suppress("UNCHECKED_CAST")
-                    (widgetAction as? AC)?.let {
-                        sendAction(it)
-                    }
-                }
+                widget.action.collect { sendAction(it) }
             }
         }
     }
