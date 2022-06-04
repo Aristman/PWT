@@ -9,20 +9,23 @@ Android"
 
 # HTTP
 
-<b>Retrofit</b>
+<b>kTor</b>
 <b><i>OkHttp</i></b>
+
+# STORE
+<b>SQLDelight</b>
 
 # DI
 
 <b>Hilt</b><br>
-<b>Koin</b>
 
 
 # Core
 
 <b><i>Jetpack Compose</i></b><br>
-<b>RxJava2</b>
+<b>Flow</b>
+<b>Coroutines</b>
 
 # UI
 
-<b>Accompanist</b>
+<b>Glide</b>

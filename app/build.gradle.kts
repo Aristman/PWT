@@ -60,7 +60,7 @@ android {
 
 dependencies {
 
-    baseApplicationDependencies()
+    applicationBaseDependencies()
     // Serialization
     implementation(Dependencies.Kotlin.serialization)
 }

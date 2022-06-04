@@ -24,14 +24,37 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                // Ktor
+                implementation(Dependencies.Ktor.core)
+                implementation(Dependencies.Ktor.logging)
+                implementation(Dependencies.Ktor.contentNegotiation)
+                implementation(Dependencies.Ktor.serializationJson)
+
+                // Serialization
+                implementation(Dependencies.Kotlin.serialization)
+
+                implementation(Dependencies.SqlDelight.core)
+                implementation(Dependencies.SqlDelight.coroutines)
+
+                // coroutines
+                implementation(Dependencies.Kotlin.coroutines)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(Dependencies.Ktor.okhttp)
+                implementation(Dependencies.Ktor.android)
+                implementation(Dependencies.SqlDelight.androidDriver)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting

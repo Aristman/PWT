@@ -196,13 +196,13 @@ object Dependencies {
     }
 }
 
-fun DependencyHandler.coreDependencies() {
+fun DependencyHandler.coreModuleBaseDependencies() {
     add("implementation", Dependencies.Kotlin.coroutines)
     add("implementation", Dependencies.Jetpack.lifeCycleViewModel)
     add("implementation", Dependencies.JetpackCompose.Voyager.core)
 }
 
-fun DependencyHandler.baseApplicationDependencies() {
+fun DependencyHandler.applicationBaseDependencies() {
     add("implementation", Dependencies.Jetpack.core)
     add("implementation", Dependencies.Jetpack.lifeCycle)
     add("implementation", Dependencies.JetpackCompose.ui)

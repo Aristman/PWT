@@ -33,5 +33,5 @@ android {
 }
 
 dependencies {
-    coreDependencies()
+    coreModuleBaseDependencies()
 }

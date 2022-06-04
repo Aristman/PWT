@@ -61,7 +61,7 @@ object Versions {
     const val gradleVersionPlugin = "0.41.0"
     const val voyager = "1.0.0-rc02"
     const val dataStore = "1.0.0"
-    const val ktor = "2.0.0"
+    const val ktor = "2.0.2"
     const val sqlDelight = "1.5.3"
     const val paging = "3.1.1"
     const val googleServices = "4.3.10"
