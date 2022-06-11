@@ -110,7 +110,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val version = "1.7.0"
+        const val version = "1.6.21"
 
         private object Version {
             const val serialization = "1.3.3"
