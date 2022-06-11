@@ -1,221 +1,276 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object Dependencies {
-    object Jetpack {
-        const val core = "androidx.core:core-ktx:${Versions.jetpackCore}"
-        const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
-        const val lifeCycle =
-            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycle}"
-        const val lifeCycleViewModel =
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"
+    const val gradleVersion = "7.2.1"
+    const val secretGradlePluginVersion = "2.0.1"
+    const val ktLintVersion = "9.2.1"
 
-        object Paging {
-            const val core = "androidx.paging:paging-runtime:${Versions.paging}"
-            const val compose = "androidx.paging:paging-compose:${Versions.Compose.paging}"
+    object Jetpack {
+        private object Version {
+            const val core = "1.8.0"
+            const val fragment = "1.4.1"
+            const val lifeCycleVersion = "2.5.0-rc01"
+            const val paging = "3.1.1"
+            const val constraintLayout = "2.1.4"
+            const val appcompat = "1.4.2"
+        }
+
+        const val core = "androidx.core:core-ktx:${Version.core}"
+        const val fragment = "androidx.fragment:fragment-ktx:${Version.fragment}"
+        const val viewModel =
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifeCycleVersion}"
+        const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifeCycleVersion}"
+        const val paging = "androidx.paging:paging-runtime:${Version.paging}"
+        const val appCompat = "androidx.appcompat:appcompat:${Version.appcompat}"
+        const val constraintLayout =
+            "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+
+        object Compose {
+            const val version = "1.2.0-beta03"
+
+            private object Version {
+                const val activity = "1.4.0"
+                const val constraintLayout = "1.0.1"
+                const val paging = "1.0.0-alpha15"
+                const val materialThemeAdapter = "1.1.3"
+                const val landscapist = "1.4.8"
+            }
+
+            const val ui = "androidx.compose.ui:ui:$version"
+            const val activity = "androidx.activity:activity-compose:${Version.activity}"
+            const val material = "androidx.compose.material:material:$version"
+            const val animation = "androidx.compose.animation:animation:$version"
+            const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
+            const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+            const val constraintLayout =
+                "androidx.constraintlayout:constraintlayout-compose:${Version.constraintLayout}"
+            const val viewModel =
+                "androidx.lifecycle:lifecycle-viewmodel-compose:${Jetpack.Version.lifeCycleVersion}"
+            const val paging = "androidx.paging:paging-compose:${Version.paging}"
+            const val MaterialThemeAdapter =
+                "com.google.android.material:compose-theme-adapter:${Version.materialThemeAdapter}"
+            const val landscapistGlide =
+                "com.github.skydoves:landscapist-glide:${Version.landscapist}"
+
+            object Accompanist {
+                private object Version {
+                    const val stable = "0.23.1"
+                    const val latest = "0.24.10-beta"
+                }
+
+                private const val version = Version.latest
+
+                const val drawablePainter =
+                    "com.google.accompanist:accompanist-drawablepainter:$version"
+                const val flowlayout = "com.google.accompanist:accompanist-flowlayout:$version"
+                const val insets = "com.google.accompanist:accompanist-insets:$version"
+                const val insetsUi = "com.google.accompanist:accompanist-insets-ui:$version"
+                const val navigationAnimation =
+                    "com.google.accompanist:accompanist-navigation-animation:$version"
+                const val navigationMaterial =
+                    "com.google.accompanist:accompanist-navigation-material:$version"
+                const val pager = "com.google.accompanist:accompanist-pager:$version"
+                const val pagerIndicators =
+                    "com.google.accompanist:accompanist-pager-indicators:$version"
+                const val placeholder = "com.google.accompanist:accompanist-placeholder:$version"
+                const val placeholderMaterial =
+                    "com.google.accompanist:accompanist-placeholder-material:$version"
+                const val systemUiController =
+                    "com.google.accompanist:accompanist-systemuicontroller:$version"
+                const val webView = "com.google.accompanist:accompanist-webview:$version"
+                const val permissions = "com.google.accompanist:accompanist-permissions:$version"
+                const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:$version"
+                const val theme = "com.google.accompanist:accompanist-appcompat-theme:$version"
+            }
+
+            object Voyager {
+                private const val version = "1.0.0-rc02"
+
+                const val core = "cafe.adriel.voyager:voyager-navigator:$version"
+                const val bottomSheet =
+                    "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$version"
+                const val tab = "cafe.adriel.voyager:voyager-tab-navigator:$version"
+                const val transitions =
+                    "cafe.adriel.voyager:voyager-transitions:$version"
+                const val viewModel = "cafe.adriel.voyager:voyager-androidx:$version"
+                const val koin = "cafe.adriel.voyager:voyager-koin:$version"
+                const val kodein = "cafe.adriel.voyager:voyager-kodein:$version"
+                const val hilt = "cafe.adriel.voyager:voyager-hilt:$version"
+                const val rxJava = "cafe.adriel.voyager:voyager-rxjava:$version"
+                const val liveData = "cafe.adriel.voyager:voyager-livedata:$version"
+            }
+        }
+
+        object Navigation {
+            private const val version = "2.4.2"
+
+            const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+            const val ui = "androidx.navigation:navigation-ui-ktx:$version"
+            const val runtime = "androidx.navigation:navigation-runtime-ktx:$version"
         }
     }
 
     object Kotlin {
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-        const val coroutines =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
+        const val version = "1.6.21"
+
+        private object Version {
+            const val serialization = "1.3.3"
+            const val coroutines = "1.6.0-native-mt"
+            const val dateTime = "0.3.1"
+        }
+
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
         const val serialization =
-            "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinSerialization}"
+            "org.jetbrains.kotlinx:kotlinx-serialization-core:${Version.serialization}"
         const val serializationJson =
-            "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinSerialization}"
-        const val dateTime =
-            "org.jetbrains.kotlinx:kotlinx-datetime:${Versions.kotlinDateTime}"
-    }
-
-    object JetpackCompose {
-        const val ui = "androidx.compose.ui:ui:${Versions.Compose.core}"
-        const val activity = "androidx.activity:activity-compose:${Versions.Compose.activity}"
-        const val material = "androidx.compose.material:material:${Versions.Compose.core}"
-        const val animation = "androidx.compose.animation:animation:${Versions.Compose.core}"
-        const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.Compose.core}"
-        const val uiToolingPreview =
-            "androidx.compose.ui:ui-tooling-preview:${Versions.Compose.core}"
-        const val constraintLayout =
-            "androidx.constraintlayout:constraintlayout-compose:${Versions.Compose.constraintLayout}"
-        const val lifecycleViewModel =
-            "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.lifecycle}"
-        const val uiTestJunit = "androidx.compose.ui:ui-test-junit4:${Versions.Compose.core}"
-        const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.Compose.core}"
-        const val MaterialThemeAdapter =
-            "com.google.android.material:compose-theme-adapter:${Versions.Compose.materialThemeAdapter}"
-        const val coil = "io.coil-kt:coil-compose:${Versions.Compose.coil}"
-        const val landscapistGlide =
-            "com.github.skydoves:landscapist-glide:${Versions.Compose.landscapist}"
-
-        object Accompanist {
-            const val drawablePainter =
-                "com.google.accompanist:accompanist-drawablepainter:${Versions.Accompanist.stable}"
-            const val flowlayout =
-                "com.google.accompanist:accompanist-flowlayout:${Versions.Accompanist.stable}"
-            const val insets =
-                "com.google.accompanist:accompanist-insets:${Versions.Accompanist.latest}"
-            const val insetsUi =
-                "com.google.accompanist:accompanist-insets-ui:${Versions.Accompanist.latest}"
-            const val navigationAnimation =
-                "com.google.accompanist:accompanist-navigation-animation:${Versions.Accompanist.stable}"
-            const val navigationMaterial =
-                "com.google.accompanist:accompanist-navigation-material:${Versions.Accompanist.stable}"
-            const val pager =
-                "com.google.accompanist:accompanist-pager:${Versions.Accompanist.pager}"
-            const val pagerIndicators =
-                "com.google.accompanist:accompanist-pager-indicators:${Versions.Accompanist.pager}"
-            const val placeholder =
-                "com.google.accompanist:accompanist-placeholder:${Versions.Accompanist.stable}"
-            const val placeholderMaterial =
-                "com.google.accompanist:accompanist-placeholder-material:${Versions.Accompanist.stable}"
-            const val systemUiController =
-                "com.google.accompanist:accompanist-systemuicontroller:${Versions.Accompanist.stable}"
-            const val webView =
-                "com.google.accompanist:accompanist-webview:${Versions.Accompanist.stable}"
-            const val permissions =
-                "com.google.accompanist:accompanist-permissions:${Versions.Accompanist.latest}"
-            const val swipeRefresh =
-                "com.google.accompanist:accompanist-swiperefresh:${Versions.Accompanist.stable}"
-            const val theme =
-                "com.google.accompanist:accompanist-appcompat-theme:${Versions.Accompanist.stable}"
-        }
-
-        object Voyager {
-            const val core = "cafe.adriel.voyager:voyager-navigator:${Versions.voyager}"
-            const val bottomSheet =
-                "cafe.adriel.voyager:voyager-bottom-sheet-navigator:${Versions.voyager}"
-            const val tab = "cafe.adriel.voyager:voyager-tab-navigator:${Versions.voyager}"
-            const val transitions = "cafe.adriel.voyager:voyager-transitions:${Versions.voyager}"
-            const val viewModel = "cafe.adriel.voyager:voyager-androidx:${Versions.voyager}"
-            const val koin = "cafe.adriel.voyager:voyager-koin:${Versions.voyager}"
-            const val kodein = "cafe.adriel.voyager:voyager-kodein:${Versions.voyager}"
-            const val hilt = "cafe.adriel.voyager:voyager-hilt:${Versions.voyager}"
-            const val rxJava = "cafe.adriel.voyager:voyager-rxjava:${Versions.voyager}"
-            const val liveData = "cafe.adriel.voyager:voyager-livedata:${Versions.voyager}"
-        }
-    }
-
-    object Design {
-        const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-        const val material = "com.google.android.material:material:${Versions.material}"
-        const val constraintLayout =
-            "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    }
-
-    object NavigationComponent {
-        const val navigationRuntime =
-            "androidx.navigation:navigation-runtime-ktx:${Versions.navigation}"
-        const val navigationFragment =
-            "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-        const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    }
-
-    object Test {
-        const val junit = "junit:junit:${Versions.junit}"
-        const val junitExt = "androidx.test.ext:junit:${Versions.junitExt}"
-        const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-        const val composeUi = "androidx.compose.ui:ui-test-junit4:${Versions.Compose.core}"
+            "org.jetbrains.kotlinx:kotlinx-serialization-json:${Version.serialization}"
+        const val dateTime = "org.jetbrains.kotlinx:kotlinx-datetime:${Version.dateTime}"
     }
 
     object Yandex {
-        const val lite = "com.yandex.android:maps.mobile:${Versions.Yandex.lite}"
-        const val full = "com.yandex.android:maps.mobile:${Versions.Yandex.full}"
+        private object Version {
+            const val lite = "4.0.0-lite"
+            const val full = "4.0.0-full"
+        }
+
+        const val lite = "com.yandex.android:maps.mobile:${Version.lite}"
+        const val full = "com.yandex.android:maps.mobile:${Version.full}"
     }
 
     object Google {
         object FireBase {
-            const val core = "com.google.firebase:firebase-bom:${Versions.FireBase.core}"
-            const val messaging =
-                "com.google.firebase:firebase-messaging-ktx:${Versions.FireBase.messaging}"
-            const val storage =
-                "com.google.firebase:firebase-storage-ktx:${Versions.FireBase.storage}"
-            const val firestore =
-                "com.google.firebase:firebase-firestore-ktx:${Versions.FireBase.firestore}"
-            const val analytics =
-                "com.google.firebase:firebase-analytics-ktx:${Versions.FireBase.analytics}"
+            private const val bomVersion = "30.1.0"
+
+            const val bom = "com.google.firebase:firebase-bom:$bomVersion}"
+            const val messaging = "com.google.firebase:firebase-messaging-ktx"
+            const val storage = "com.google.firebase:firebase-storage-ktx"
+            const val firestore = "com.google.firebase:firebase-firestore-ktx"
+            const val analytics = "com.google.firebase:firebase-analytics-ktx"
+            const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
         }
 
-        const val map = "com.google.android.gms:play-services-maps:${Versions.Google.map}"
-        const val mapKtx = "com.google.maps.android:maps-ktx:${Versions.Google.mapKtx}"
-        const val location =
-            "com.google.android.gms:play-services-location:${Versions.Google.location}"
-        const val utils = "com.google.maps.android:android-maps-utils:${Versions.Google.utils}"
-        const val compose = "com.google.maps.android:maps-compose:${Versions.Google.compose}"
+        object Map {
+            private object Version {
+                const val map = "18.0.2"
+                const val mapKtx = "3.3.0"
+                const val location = "19.0.1"
+                const val utils = "2.2.3"
+            }
+
+            const val map = "com.google.android.gms:play-services-maps:${Version.map}"
+            const val mapKtx = "com.google.maps.android:maps-ktx:${Version.mapKtx}"
+            const val location = "com.google.android.gms:play-services-location:${Version.location}"
+            const val utils = "com.google.maps.android:android-maps-utils:${Version.utils}"
+        }
+    }
+
+    object Test {
+        private object Version {
+            const val junit = "4.13.2"
+            const val junitExt = "1.1.3"
+            const val espresso = "3.4.0"
+        }
+
+        const val junit = "junit:junit:${Version.junit}"
+        const val junitExt = "androidx.test.ext:junit:${Version.junitExt}"
+        const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso}"
+        const val composeUi = "androidx.compose.ui:ui-test-junit4:${Jetpack.Compose.version}"
+        const val composeUiTestManifest =
+            "androidx.compose.ui:ui-test-manifest:${Jetpack.Compose.version}"
     }
 
     object Dagger {
-        const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
-        const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
+        private const val version = "2.42"
+
+        const val hilt = "com.google.dagger:hilt-android:$version"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
     }
 
     object Retrofit {
-        const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-        const val convertJson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        private const val version = "2.9.0"
+        const val core = "com.squareup.retrofit2:retrofit:$version"
+        const val json = "com.squareup.retrofit2:converter-gson:$version"
+        const val moshi = "com.squareup.retrofit2:converter-moshi:$version"
     }
 
     object OkHttp {
-        const val core = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
-        const val okhttpLoggingInterceptor =
-            "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+        private const val version = "5.0.0-alpha.8"
+        const val core = "com.squareup.okhttp3:okhttp:$version"
+        const val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
     }
 
     object Glide {
-        const val core = "com.github.bumptech.glide:glide:${Versions.glide}"
-        const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+        private const val version = "4.12.0"
+        const val core = "com.github.bumptech.glide:glide:$version"
+        const val compiler = "com.github.bumptech.glide:compiler:$version"
+    }
+
+    object Coil {
+        private const val version = "2.1.0"
+
+        const val core = "io.coil-kt:coil:$version"
+        const val compose = "io.coil-kt:coil-compose:$version"
     }
 
     object Room {
-        const val core = "androidx.room:room-runtime:${Versions.room}"
-        const val compiler = "androidx.room:room-compiler:${Versions.room}"
+        private const val version = "2.4.2"
+
+        const val core = "androidx.room:room-runtime:$version"
+        const val compiler = "androidx.room:room-compiler:$version"
     }
 
     object DataStore {
-        const val proto = "androidx.datastore:datastore:${Versions.dataStore}"
-        const val preferences = "androidx.datastore:datastore-preferences:${Versions.dataStore}"
+        private const val version = "1.0.0"
+
+        const val proto = "androidx.datastore:datastore:$version"
+        const val preferences = "androidx.datastore:datastore-preferences:$version"
     }
 
     object Ktor {
-        const val core = "io.ktor:ktor-client-core:${Versions.ktor}"
-        const val cio = "io.ktor:ktor-client-cio:${Versions.ktor}"
-        const val logging = "io.ktor:ktor-client-logging:${Versions.ktor}"
-        const val contentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
-        const val serializationJson = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
-        const val android = "io.ktor:ktor-client-android:${Versions.ktor}"
-        const val okhttp = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
-        const val ios = "io.ktor:ktor-client-ios:${Versions.ktor}"
+        private const val version = "2.0.2"
+
+        const val core = "io.ktor:ktor-client-core:$version"
+        const val cio = "io.ktor:ktor-client-cio:$version"
+        const val logging = "io.ktor:ktor-client-logging:$version"
+        const val contentNegotiation = "io.ktor:ktor-client-content-negotiation:$version"
+        const val serializationJson = "io.ktor:ktor-serialization-kotlinx-json:$version"
+        const val android = "io.ktor:ktor-client-android:$version"
+        const val okhttp = "io.ktor:ktor-client-okhttp:$version"
+        const val ios = "io.ktor:ktor-client-ios:$version"
     }
 
     object SqlDelight {
-        const val core = "com.squareup.sqldelight:runtime:${Versions.sqlDelight}"
-        const val coroutines =
-            "com.squareup.sqldelight:coroutines-extensions:${Versions.sqlDelight}"
-        const val androidDriver = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
-        const val nativeDriver = "com.squareup.sqldelight:native-driver:${Versions.sqlDelight}"
-        const val paging3 =
-            "com.squareup.sqldelight:android-paging3-extensions:${Versions.sqlDelight}"
+        const val version = "1.5.3"
+
+        const val core = "com.squareup.sqldelight:runtime:$version"
+        const val coroutines = "com.squareup.sqldelight:coroutines-extensions:$version"
+        const val androidDriver = "com.squareup.sqldelight:android-driver:$version"
+        const val nativeDriver = "com.squareup.sqldelight:native-driver:$version"
+        const val paging3 = "com.squareup.sqldelight:android-paging3-extensions:$version"
     }
 }
 
 fun DependencyHandler.coreModuleBaseDependencies() {
     add("implementation", Dependencies.Kotlin.coroutines)
-    add("implementation", Dependencies.Jetpack.lifeCycleViewModel)
-    add("implementation", Dependencies.JetpackCompose.Voyager.core)
+    add("implementation", Dependencies.Jetpack.viewModel)
+    add("implementation", Dependencies.Jetpack.Compose.Voyager.core)
 }
 
 fun DependencyHandler.applicationBaseDependencies() {
     add("implementation", Dependencies.Jetpack.core)
     add("implementation", Dependencies.Jetpack.lifeCycle)
-    add("implementation", Dependencies.JetpackCompose.ui)
-    add("implementation", Dependencies.JetpackCompose.material)
-    add("implementation", Dependencies.JetpackCompose.uiToolingPreview)
-    add("implementation", Dependencies.JetpackCompose.activity)
+    add("implementation", Dependencies.Jetpack.Compose.ui)
+    add("implementation", Dependencies.Jetpack.Compose.material)
+    add("implementation", Dependencies.Jetpack.Compose.uiToolingPreview)
+    add("implementation", Dependencies.Jetpack.Compose.activity)
 
-    add("implementation", Dependencies.JetpackCompose.Voyager.core)
+    add("implementation", Dependencies.Jetpack.Compose.Voyager.core)
 
     add("testImplementation", Dependencies.Test.junit)
     add("androidTestImplementation", Dependencies.Test.junitExt)
     add("androidTestImplementation", Dependencies.Test.espresso)
     add("androidTestImplementation", Dependencies.Test.composeUi)
-    add("debugImplementation", Dependencies.JetpackCompose.uiTooling)
-    add("debugImplementation", Dependencies.JetpackCompose.uiTestManifest)
+    add("debugImplementation", Dependencies.Jetpack.Compose.uiTooling)
+    add("debugImplementation", Dependencies.Test.composeUiTestManifest)
 }

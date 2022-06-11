@@ -45,7 +45,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.Compose.core
+        kotlinCompilerExtensionVersion = Dependencies.Jetpack.Compose.version
     }
     packagingOptions {
         resources.apply {

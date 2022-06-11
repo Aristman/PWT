@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.squareup.sqldelight")
 }
 
 version = "1.0"
@@ -103,5 +104,11 @@ android {
     defaultConfig {
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "ru.marslab.pocketwordtranslator.shared.db"
     }
 }

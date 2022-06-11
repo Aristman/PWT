@@ -5,10 +5,10 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:${Versions.gradle}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}")
-        classpath("com.squareup.sqldelight:gradle-plugin:${Versions.sqlDelight}")
+        classpath("com.android.tools.build:gradle:${Dependencies.gradleVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Kotlin.version}")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${Dependencies.Kotlin.version}")
+        classpath("com.squareup.sqldelight:gradle-plugin:${Dependencies.SqlDelight.version}")
     }
 }
 
