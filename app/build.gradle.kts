@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-parcelize")
-    id("com.github.ben-manes.versions") version "0.42.0" // ./gradlew dependencyUpdates
+    id("com.github.ben-manes.versions") version Dependencies.dependenciesUpdateVersion // ./gradlew dependencyUpdates
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")

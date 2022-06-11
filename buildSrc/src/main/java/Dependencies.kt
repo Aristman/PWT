@@ -1,9 +1,8 @@
-import org.gradle.api.artifacts.dsl.DependencyHandler
-
 object Dependencies {
     const val gradleVersion = "7.2.1"
     const val secretGradlePluginVersion = "2.0.1"
-    const val ktLintVersion = "9.2.1"
+    const val ktLintVersion = "10.3.0"
+    const val dependenciesUpdateVersion = "0.42.0"
 
     object Jetpack {
         private object Version {
@@ -111,7 +110,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val version = "1.6.21"
+        const val version = "1.7.0"
 
         private object Version {
             const val serialization = "1.3.3"
@@ -249,28 +248,4 @@ object Dependencies {
         const val nativeDriver = "com.squareup.sqldelight:native-driver:$version"
         const val paging3 = "com.squareup.sqldelight:android-paging3-extensions:$version"
     }
-}
-
-fun DependencyHandler.coreModuleBaseDependencies() {
-    add("implementation", Dependencies.Kotlin.coroutines)
-    add("implementation", Dependencies.Jetpack.viewModel)
-    add("implementation", Dependencies.Jetpack.Compose.Voyager.core)
-}
-
-fun DependencyHandler.applicationBaseDependencies() {
-    add("implementation", Dependencies.Jetpack.core)
-    add("implementation", Dependencies.Jetpack.lifeCycle)
-    add("implementation", Dependencies.Jetpack.Compose.ui)
-    add("implementation", Dependencies.Jetpack.Compose.material)
-    add("implementation", Dependencies.Jetpack.Compose.uiToolingPreview)
-    add("implementation", Dependencies.Jetpack.Compose.activity)
-
-    add("implementation", Dependencies.Jetpack.Compose.Voyager.core)
-
-    add("testImplementation", Dependencies.Test.junit)
-    add("androidTestImplementation", Dependencies.Test.junitExt)
-    add("androidTestImplementation", Dependencies.Test.espresso)
-    add("androidTestImplementation", Dependencies.Test.composeUi)
-    add("debugImplementation", Dependencies.Jetpack.Compose.uiTooling)
-    add("debugImplementation", Dependencies.Test.composeUiTestManifest)
 }
