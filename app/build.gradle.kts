@@ -41,9 +41,9 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Jetpack.Compose.version
     }

@@ -25,14 +25,13 @@ object Dependencies {
             "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
 
         object Compose {
-            const val version = "1.2.0-beta03"
+            const val version = "1.2.1"
 
             private object Version {
-                const val activity = "1.4.0"
+                const val activity = "1.5.1"
                 const val constraintLayout = "1.0.1"
                 const val paging = "1.0.0-alpha15"
                 const val materialThemeAdapter = "1.1.3"
-                const val landscapist = "1.4.8"
             }
 
             const val ui = "androidx.compose.ui:ui:$version"
@@ -48,8 +47,6 @@ object Dependencies {
             const val paging = "androidx.paging:paging-compose:${Version.paging}"
             const val MaterialThemeAdapter =
                 "com.google.android.material:compose-theme-adapter:${Version.materialThemeAdapter}"
-            const val landscapistGlide =
-                "com.github.skydoves:landscapist-glide:${Version.landscapist}"
 
             object Accompanist {
                 private object Version {
@@ -113,7 +110,7 @@ object Dependencies {
         const val version = "1.6.21"
 
         private object Version {
-            const val serialization = "1.3.3"
+            const val serialization = "1.4.0-RC"
             const val coroutines = "1.6.0-native-mt"
             const val dateTime = "0.3.1"
         }
@@ -138,6 +135,22 @@ object Dependencies {
     }
 
     object Google {
+        private object Version {
+            const val material = "1.6.1"
+        }
+
+        const val material = "com.google.android.material:material:${Version.material}"
+
+        object Services {
+            private object Version {
+                const val fitness = "21.1.0"
+                const val auth = "20.2.0"
+            }
+
+            const val fitness = "com.google.android.gms:play-services-fitness:${Version.fitness}"
+            const val auth = "com.google.android.gms:play-services-auth:${Version.auth}"
+        }
+
         object FireBase {
             private const val bomVersion = "30.1.0"
 
@@ -145,6 +158,7 @@ object Dependencies {
             const val messaging = "com.google.firebase:firebase-messaging-ktx"
             const val storage = "com.google.firebase:firebase-storage-ktx"
             const val firestore = "com.google.firebase:firebase-firestore-ktx"
+            const val database = "com.google.firebase:firebase-database-ktx"
             const val analytics = "com.google.firebase:firebase-analytics-ktx"
             const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
         }
