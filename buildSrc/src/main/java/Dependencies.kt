@@ -26,6 +26,7 @@ object Dependencies {
 
         object Compose {
             const val version = "1.2.1"
+            const val compilerVersion = "1.3.0"
 
             private object Version {
                 const val activity = "1.5.1"
@@ -107,11 +108,11 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val version = "1.6.21"
+        const val version = "1.7.10"
 
         private object Version {
             const val serialization = "1.4.0-RC"
-            const val coroutines = "1.6.0-native-mt"
+            const val coroutines = "1.6.4"
             const val dateTime = "0.3.1"
         }
 
