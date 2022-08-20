@@ -11,3 +11,6 @@ rootProject.name = "Pocket Word Translator"
 include(":app")
 include(":core")
 include(":shared")
+include(":data")
+include(":domain")
+include(":presentation")
