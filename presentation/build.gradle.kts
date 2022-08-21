@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("plugin.serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -30,8 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.jvmTarget
     }
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.Jetpack.Compose.compilerVersion
+    }
 }
 
 dependencies {
     applicationBaseDependencies()
+
+    implementation(project(Module.core))
+    implementation(Dependencies.Jetpack.Compose.Voyager.viewModel)
 }

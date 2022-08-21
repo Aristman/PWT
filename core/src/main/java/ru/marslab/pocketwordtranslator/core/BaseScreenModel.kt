@@ -1,10 +1,12 @@
 package ru.marslab.pocketwordtranslator.core
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.navigator.Navigator
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -18,10 +20,12 @@ import kotlinx.coroutines.launch
 
 private const val ERROR_LOG_TAG = "ViewModel Error"
 
-abstract class BaseViewModel<ST, EV : Event, AC : Action>(
+abstract class BaseScreenModel<ST, EV : Event, AC : Action>(
     initState: ST,
     eventBufferCapacity: Int = 1
-) : ViewModel() {
+) : ScreenModel {
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+
     private val _state = MutableStateFlow(initState)
     val state: StateFlow<ST>
         get() = _state.asStateFlow()
@@ -39,7 +43,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     init {
         this.action
             .onEach { _state.tryEmit(reduceStateByAction(state.value, it)) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, initState)
+            .stateIn(scope, SharingStarted.Eagerly, initState)
     }
 
     protected fun collectWidgetsActions(vararg widgets: BaseWidgetModel<*, AC>) {
@@ -56,7 +60,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
 
     infix fun sendAction(action: AC) {
         launch {
-            this@BaseViewModel.action.emit(action)
+            this@BaseScreenModel.action.emit(action)
         }
     }
 
@@ -65,7 +69,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     }
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
-        viewModelScope.launch {
+        scope.launch {
             block(this)
         }
     }
@@ -85,4 +89,9 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     }
 
     protected abstract fun reduceStateByAction(currentState: ST, action: AC): ST
+
+    override fun onDispose() {
+        super.onDispose()
+        scope.cancel()
+    }
 }

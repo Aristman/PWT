@@ -61,6 +61,8 @@ android {
 dependencies {
 
     applicationBaseDependencies()
+
+    implementation(project(Module.presentation))
     // Serialization
     implementation(Dependencies.Kotlin.serialization)
 }

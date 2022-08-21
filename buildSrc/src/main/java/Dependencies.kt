@@ -1,5 +1,5 @@
 object Dependencies {
-    const val gradleVersion = "7.2.1"
+    const val gradleVersion = "7.2.2"
     const val secretGradlePluginVersion = "2.0.1"
     const val ktLintVersion = "10.3.0"
     const val dependenciesUpdateVersion = "0.42.0"
@@ -195,7 +195,7 @@ object Dependencies {
     }
 
     object Dagger {
-        private const val version = "2.42"
+        const val version = "2.42"
 
         const val hilt = "com.google.dagger:hilt-android:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
@@ -262,5 +262,14 @@ object Dependencies {
         const val androidDriver = "com.squareup.sqldelight:android-driver:$version"
         const val nativeDriver = "com.squareup.sqldelight:native-driver:$version"
         const val paging3 = "com.squareup.sqldelight:android-paging3-extensions:$version"
+    }
+
+    object Decompose {
+        private const val version = "1.0.0-alpha-02"
+
+        const val core = "com.arkivanov.decompose:decompose:$version"
+        const val jetpack = "com.arkivanov.decompose:extensions-compose-jetpack:$version"
+        const val jetbrains = "com.arkivanov.decompose:extensions-compose-jetbrains:$version"
+        const val android = "com.arkivanov.decompose:extensions-android:$version"
     }
 }

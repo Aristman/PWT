@@ -6,15 +6,15 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import ru.marslab.pocketwordtranslator.R
+import ru.marslab.pocketwordtranslator.presentation.R
 
-private val fontFamily = FontFamily(
-    Font(R.font.montserrat, FontWeight.Normal)
+private val appBaseFont = FontFamily(
+    Font(R.font.montserrat_alternates)
 )
 
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = fontFamily,
+        fontFamily = appBaseFont,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     )
