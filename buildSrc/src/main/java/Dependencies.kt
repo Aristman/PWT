@@ -198,7 +198,7 @@ object Dependencies {
         const val version = "2.42"
 
         const val hilt = "com.google.dagger:hilt-android:$version"
-        const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
     object Retrofit {

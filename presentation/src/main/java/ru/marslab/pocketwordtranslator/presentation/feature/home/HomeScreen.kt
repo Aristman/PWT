@@ -9,15 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.androidx.AndroidScreen
-import cafe.adriel.voyager.core.model.rememberScreenModel
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.hilt.getScreenModel
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 
-class HomeScreen : AndroidScreen() {
+class HomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        val screenModel = rememberScreenModel { HomeScreenModel() }
+        val screenModel: HomeScreenModel = getScreenModel()
         Log.d("MYTAG", "Content: $screenModel")
         MainView(screenModel)
     }

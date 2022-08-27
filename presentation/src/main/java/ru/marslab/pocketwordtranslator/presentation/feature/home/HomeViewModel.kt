@@ -1,13 +1,15 @@
 package ru.marslab.pocketwordtranslator.presentation.feature.home
 
-import ru.marslab.pocketwordtranslator.core.BaseScreenModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import ru.marslab.pocketwordtranslator.core.BaseViewModel
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
 import javax.inject.Inject
 
-class HomeScreenModel @Inject constructor() :
-    BaseScreenModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
+@HiltViewModel
+class HomeViewModel @Inject constructor() :
+    BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
     override fun reduceStateByAction(
         currentState: HomeState,
         action: HomeAction
