@@ -1,24 +1,35 @@
 package ru.marslab.pocketwordtranslator.presentation.feature.home
 
 import ru.marslab.pocketwordtranslator.core.BaseViewModel
+import ru.marslab.pocketwordtranslator.domain.model.switch
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
-import javax.inject.Inject
+import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
 
-class HomeViewModel @Inject constructor() :
-    BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
+class HomeViewModel : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
+    val translationFieldWidgetModel = TranslationFieldWidgetModel()
+
+    init {
+        collectWidgetsActions(
+            translationFieldWidgetModel
+        )
+    }
+
     override fun reduceStateByAction(
         currentState: HomeState,
         action: HomeAction
     ): HomeState =
         when (action) {
-            HomeAction.TestClick -> currentState.copy(
-                word = if (currentState.word.isEmpty()) {
-                    "click ON"
-                } else {
-                    ""
-                }
-            )
+            is HomeAction.HistoryClick -> {
+                currentState
+            }
+            is HomeAction.TranslateClick -> {
+                currentState
+            }
+            is HomeAction.LanguageClick -> {
+                translationFieldWidgetModel.switchLanguage()
+                currentState.copy(language = currentState.language.switch())
+            }
         }
 }

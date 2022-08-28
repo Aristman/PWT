@@ -1,8 +1,12 @@
 package ru.marslab.pocketwordtranslator.presentation.feature.home.model
 
-import javax.annotation.concurrent.Immutable
+import androidx.compose.runtime.Immutable
+import ru.marslab.pocketwordtranslator.domain.model.Language
 
 @Immutable
 data class HomeState(
-    val word: String = ""
+    val word: String = "",
+    val language: Language = Language.Rus,
+    val wordOfDay: String = "",
+    val history: List<String> = emptyList()
 )

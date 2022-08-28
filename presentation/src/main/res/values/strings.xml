@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="test">Тестовая строка</string>
+    <string name="ruen">RuEn</string>
+    <string name="write_the_word">Введите слово</string>
 </resources>
