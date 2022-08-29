@@ -37,14 +37,10 @@ import ru.marslab.pocketwordtranslator.domain.model.switch
 import ru.marslab.pocketwordtranslator.presentation.R
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 
-@Immutable
-data class TranslationFieldState(
-    val word: String = "",
-    val language: Language = Language.Rus
-)
-
 class TranslationFieldWidgetModel :
-    BaseWidgetModel<TranslationFieldState, HomeAction>(TranslationFieldState()) {
+    BaseWidgetModel<TranslationFieldWidgetModel.TranslationFieldState, HomeAction>(
+        TranslationFieldState()
+    ) {
 
     fun setTranslateWord(word: String) {
         setState { state.value.copy(word = word) }
@@ -53,6 +49,12 @@ class TranslationFieldWidgetModel :
     fun switchLanguage() {
         setState { state.value.copy(language = state.value.language.switch()) }
     }
+
+    @Immutable
+    data class TranslationFieldState(
+        val word: String = "",
+        val language: Language = Language.Rus
+    )
 }
 
 @Composable
