@@ -1,5 +1,8 @@
 package ru.marslab.pocketwordtranslator.presentation.theme
 
+import androidx.compose.material.Colors
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
 
 val primaryColor = Color(0xFF626A70)
@@ -22,3 +25,62 @@ val backgroundLightColor = Color(0xFFFFFFFF)
 val onBackgroundLightColor = Color(0xFF000000)
 val backgroundDarkColor = Color(0xFF000000)
 val onBackgroundDarkColor = Color(0xFFFFFFFF)
+
+val pwtLightGray = Color(0xFFE4E4E4)
+val pwtGray = Color(0xFFA7A7A7)
+
+internal val darkColors = darkColors(
+    primary = primaryColor,
+    primaryVariant = primaryDarkColor,
+    secondary = secondaryColor,
+    secondaryVariant = secondaryDarkColor,
+    surface = surfaceDarkColor,
+    error = errorColor,
+    background = backgroundDarkColor,
+    onPrimary = onPrimaryDarkColor,
+    onSecondary = onSecondaryDarkColor,
+    onSurface = onSurfaceDarkColor,
+    onError = onErrorColor,
+    onBackground = onBackgroundDarkColor
+)
+
+internal val lightColors = lightColors(
+    primary = primaryLightColor,
+    primaryVariant = primaryDarkColor,
+    secondary = secondaryColor,
+    secondaryVariant = secondaryDarkColor,
+    surface = surfaceLightColor,
+    error = errorColor,
+    background = backgroundLightColor,
+    onPrimary = onPrimaryLightColor,
+    onSecondary = onSecondaryLightColor,
+    onSurface = onSurfaceLightColor,
+    onError = onErrorColor,
+    onBackground = onBackgroundLightColor
+)
+
+internal data class PwtColors(
+    val background: Color
+)
+
+internal val darkPwtColors = PwtColors(
+    background = surfaceDarkColor
+)
+
+internal val lightPwtColors = PwtColors(
+    background = surfaceLightColor
+)
+
+internal fun getColorPalette(darkTheme: Boolean): Colors =
+    if (darkTheme) {
+        darkColors
+    } else {
+        lightColors
+    }
+
+internal fun pwtColors(darkTheme: Boolean): PwtColors =
+    if (darkTheme) {
+        darkPwtColors
+    } else {
+        lightPwtColors
+    }

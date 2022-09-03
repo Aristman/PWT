@@ -86,7 +86,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
         widgets.map { it.action }
             .merge()
             .onEach { action ->
-                (action as? AC)?.let { sendAction(action) }
+                (action as? AC)?.let { this@BaseViewModel sendAction action }
             }
             .shareIn(viewModelScope, SharingStarted.Eagerly)
     }
