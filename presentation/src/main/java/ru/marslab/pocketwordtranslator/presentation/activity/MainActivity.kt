@@ -8,11 +8,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.Navigator
-import ru.marslab.pocketwordtranslator.navigation.NavGraph
+import org.kodein.di.DIAware
+import org.kodein.di.android.closestDI
+import ru.marslab.pocketwordtranslator.presentation.navigation.NavGraph
 import ru.marslab.pocketwordtranslator.presentation.theme.PocketWordTranslatorTheme
 import ru.marslab.pocketwordtranslator.presentation.theme.appBackground
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), DIAware {
+
+    override val di by closestDI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

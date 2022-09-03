@@ -11,6 +11,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,6 +42,7 @@ class WordOfDayCardWidgetModel :
         }
     }
 
+    @Immutable
     data class WordOfDayState(
         val englishWord: String = "",
         val russianWord: String = ""

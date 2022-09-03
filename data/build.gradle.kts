@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    coreModuleBaseDependencies()
+    moduleBaseDependencies()
     implementation(project(Module.domain))
     implementation(project(Module.core))
 }

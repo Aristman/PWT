@@ -4,13 +4,16 @@ import ru.marslab.pocketwordtranslator.core.Action
 import ru.marslab.pocketwordtranslator.core.BaseViewModel
 import ru.marslab.pocketwordtranslator.core.BaseWidgetModel
 import ru.marslab.pocketwordtranslator.domain.model.switch
+import ru.marslab.pocketwordtranslator.domain.usecase.GetWordOfDayUseCase
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCardWidgetModel
 
-class HomeViewModel : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
+class HomeViewModel(
+    private val getWordOfDayUseCase: GetWordOfDayUseCase
+) : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
     val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
 

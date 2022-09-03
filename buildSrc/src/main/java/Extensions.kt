@@ -1,20 +1,23 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.coreModuleBaseDependencies() {
+fun DependencyHandler.moduleBaseDependencies() {
+    addImplementation(Dependencies.Jetpack.Compose.runtime)
     addImplementation(Dependencies.Kotlin.coroutines)
     addImplementation(Dependencies.Jetpack.viewModel)
     addImplementation(Dependencies.Jetpack.Compose.Voyager.core)
+    addImplementation(Dependencies.KoDeIn.core)
 }
 
 fun DependencyHandler.applicationBaseDependencies() {
     addImplementation(Dependencies.Jetpack.core)
-    addImplementation(Dependencies.Jetpack.lifeCycle)
+    addImplementation(Dependencies.Jetpack.viewModel)
     addImplementation(Dependencies.Jetpack.Compose.ui)
     addImplementation(Dependencies.Jetpack.Compose.material)
     addImplementation(Dependencies.Jetpack.Compose.uiToolingPreview)
     addImplementation(Dependencies.Jetpack.Compose.activity)
 
     addImplementation(Dependencies.Jetpack.Compose.Voyager.core)
+    addImplementation(Dependencies.KoDeIn.jetpackCompose)
 
     addTestImplementation(Dependencies.Test.junit)
     addAndroidTestImplementation(Dependencies.Test.junitExt)

@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
-import ru.marslab.pocketwordtranslator.presentation.core.MakeViewModel
+import ru.marslab.pocketwordtranslator.presentation.core.KodeinViewModel
 import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
 import ru.marslab.pocketwordtranslator.presentation.widget.Logo
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationField
@@ -18,7 +18,7 @@ class HomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        MakeViewModel<HomeViewModel> { homeViewModel ->
+        KodeinViewModel<HomeViewModel> { homeViewModel ->
             MainView(viewModel = homeViewModel)
         }
     }

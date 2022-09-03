@@ -33,6 +33,6 @@ android {
 }
 
 dependencies {
-    coreModuleBaseDependencies()
+    moduleBaseDependencies()
     implementation(project(Module.core))
 }

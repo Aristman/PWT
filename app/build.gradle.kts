@@ -60,9 +60,10 @@ android {
 
 dependencies {
 
-    applicationBaseDependencies()
-
+    moduleBaseDependencies()
     implementation(project(Module.presentation))
+    implementation(project(Module.data))
+    implementation(project(Module.domain))
     // Serialization
     implementation(Dependencies.Kotlin.serialization)
 }

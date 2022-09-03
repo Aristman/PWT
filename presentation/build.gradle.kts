@@ -46,5 +46,4 @@ dependencies {
 
     implementation(project(Module.core))
     implementation(project(Module.domain))
-    implementation(Dependencies.Jetpack.Compose.viewModel)
 }
