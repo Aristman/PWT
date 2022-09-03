@@ -9,17 +9,17 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun VSpacerSmall() {
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(10.dp))
 }
 
 @Composable
 fun VSpacerMedium() {
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(20.dp))
 }
 
 @Composable
 fun VSpacerLarge() {
-    Spacer(modifier = Modifier.height(32.dp))
+    Spacer(modifier = Modifier.height(40.dp))
 }
 
 @Composable
@@ -29,17 +29,17 @@ fun VSpacer(height: Int) {
 
 @Composable
 fun HSpacerSmall() {
-    Spacer(modifier = Modifier.width(8.dp))
+    Spacer(modifier = Modifier.width(10.dp))
 }
 
 @Composable
 fun HSpacerMedium() {
-    Spacer(modifier = Modifier.width(16.dp))
+    Spacer(modifier = Modifier.width(20.dp))
 }
 
 @Composable
 fun HSpacerLarge() {
-    Spacer(modifier = Modifier.width(32.dp))
+    Spacer(modifier = Modifier.width(40.dp))
 }
 
 @Composable

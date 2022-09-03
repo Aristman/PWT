@@ -36,6 +36,7 @@ import ru.marslab.pocketwordtranslator.domain.model.Language
 import ru.marslab.pocketwordtranslator.domain.model.switch
 import ru.marslab.pocketwordtranslator.presentation.R
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
+import ru.marslab.pocketwordtranslator.presentation.theme.LocalShapes
 
 class TranslationFieldWidgetModel :
     BaseWidgetModel<TranslationFieldWidgetModel.TranslationFieldState, HomeAction>(
@@ -63,7 +64,7 @@ fun TranslationField(widgetModel: TranslationFieldWidgetModel) {
     Card(
         modifier = Modifier.height(50.dp),
         elevation = 4.dp,
-        shape = RoundedCornerShape(16.dp),
+        shape = LocalShapes.current.editTextField,
         backgroundColor = MaterialTheme.colors.background
     ) {
         Row(
@@ -98,7 +99,7 @@ private fun TranslateButton(
     ) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Image(
-                painter = painterResource(id = R.drawable.base_background),
+                painter = painterResource(id = R.drawable.img_base_background),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop

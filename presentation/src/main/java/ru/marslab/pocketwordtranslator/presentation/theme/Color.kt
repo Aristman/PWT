@@ -28,6 +28,8 @@ val onBackgroundDarkColor = Color(0xFFFFFFFF)
 
 val pwtLightGray = Color(0xFFE4E4E4)
 val pwtGray = Color(0xFFA7A7A7)
+val white50 = Color(0x80FFFFFF)
+val white80 = Color(0xCCFFFFFF)
 
 internal val darkColors = darkColors(
     primary = primaryColor,
@@ -60,15 +62,21 @@ internal val lightColors = lightColors(
 )
 
 internal data class PwtColors(
-    val background: Color
+    val background: Color,
+    val white50: Color,
+    val white80: Color
 )
 
 internal val darkPwtColors = PwtColors(
-    background = surfaceDarkColor
+    background = surfaceDarkColor,
+    white50 = white50,
+    white80 = white80
 )
 
 internal val lightPwtColors = PwtColors(
-    background = surfaceLightColor
+    background = surfaceLightColor,
+    white50 = white50,
+    white80 = white80
 )
 
 internal fun getColorPalette(darkTheme: Boolean): Colors =

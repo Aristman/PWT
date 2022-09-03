@@ -8,12 +8,15 @@ import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeActio
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
+import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCardWidgetModel
 
 class HomeViewModel : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
+    val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
 
     override val widgets: List<BaseWidgetModel<*, out Action>> = listOf(
-        translationFieldWidgetModel
+        translationFieldWidgetModel,
+        wordOfDayCardWidgetModel
     ).actionObserve()
 
     override fun reduceStateByAction(
@@ -30,6 +33,9 @@ class HomeViewModel : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState(
             is HomeAction.LanguageClick -> {
                 translationFieldWidgetModel.switchLanguage()
                 currentState.copy(language = currentState.language.switch())
+            }
+            is HomeAction.WordOfDayClick -> {
+                currentState
             }
         }
 }

@@ -12,7 +12,9 @@ internal fun LocalContentProvider(
 ) {
     CompositionLocalProvider(
         LocalBrash provides pwtBrash,
-        LocalColors provides pwtColors(darkTheme)
+        LocalColors provides pwtColors(darkTheme),
+        LocalShapes provides pwtShapes,
+        LocalDimens provides pwtDimens
     ) {
         content()
     }
@@ -21,3 +23,7 @@ internal fun LocalContentProvider(
 internal val LocalBrash = compositionLocalOf { pwtBrash }
 
 internal val LocalColors = compositionLocalOf { lightPwtColors }
+
+internal val LocalShapes = compositionLocalOf { pwtShapes }
+
+internal val LocalDimens = compositionLocalOf { pwtDimens }

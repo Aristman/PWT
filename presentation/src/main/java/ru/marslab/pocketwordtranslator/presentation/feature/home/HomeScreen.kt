@@ -6,12 +6,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import ru.marslab.pocketwordtranslator.presentation.core.MakeViewModel
+import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
 import ru.marslab.pocketwordtranslator.presentation.widget.Logo
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationField
 import ru.marslab.pocketwordtranslator.presentation.widget.VSpacerMedium
+import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCard
 
 class HomeScreen : Screen {
 
@@ -28,11 +29,13 @@ private fun MainView(viewModel: HomeViewModel) {
     val state = viewModel.state.collectAsState()
     Column(
         modifier = Modifier
-            .padding(20.dp)
+            .padding(LocalDimens.current.contentPadding)
             .fillMaxSize()
     ) {
         Logo()
         VSpacerMedium()
         TranslationField(viewModel.translationFieldWidgetModel)
+        VSpacerMedium()
+        WordOfDayCard(viewModel.wordOfDayCardWidgetModel)
     }
 }
