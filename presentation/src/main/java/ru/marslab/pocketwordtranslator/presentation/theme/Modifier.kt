@@ -5,8 +5,4 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 
 fun Modifier.appBackground(): Modifier =
-    Modifier.then(
-        this.background(
-            Brush.verticalGradient(listOf(pwtLightGray, pwtGray))
-        )
-    )
+    Modifier.then(background(Brush.verticalGradient(listOf(pwtLightGray, pwtGray))))

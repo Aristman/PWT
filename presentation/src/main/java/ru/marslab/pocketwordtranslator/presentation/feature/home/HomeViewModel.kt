@@ -1,5 +1,6 @@
 package ru.marslab.pocketwordtranslator.presentation.feature.home
 
+import kotlinx.coroutines.flow.catch
 import ru.marslab.pocketwordtranslator.core.Action
 import ru.marslab.pocketwordtranslator.core.BaseViewModel
 import ru.marslab.pocketwordtranslator.core.BaseWidgetModel
@@ -16,6 +17,14 @@ class HomeViewModel(
 ) : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
     val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
+
+    init {
+        launch {
+            getWordOfDayUseCase()
+                .catch { handleError(it) }
+                .collect(wordOfDayCardWidgetModel::setWord)
+        }
+    }
 
     override val widgets: List<BaseWidgetModel<*, out Action>> = listOf(
         translationFieldWidgetModel,
