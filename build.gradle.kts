@@ -9,7 +9,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Kotlin.version}")
         classpath("org.jetbrains.kotlin:kotlin-serialization:${Dependencies.Kotlin.version}")
         classpath("com.squareup.sqldelight:gradle-plugin:${Dependencies.SqlDelight.version}")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:${Dependencies.Dagger.version}")
+//        classpath("com.google.dagger:hilt-android-gradle-plugin:${Dependencies.Dagger.version}")
     }
 }
 

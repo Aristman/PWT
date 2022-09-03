@@ -34,4 +34,6 @@ android {
 
 dependencies {
     coreModuleBaseDependencies()
+    implementation(project(Module.domain))
+    implementation(project(Module.core))
 }
