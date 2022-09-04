@@ -8,6 +8,7 @@ sealed class HomeAction : Action {
     object LanguageClick : HomeAction()
     data class HistoryClick(val word: String, val language: Language) : HomeAction()
     data class WordOfDayClick(val word: String) : HomeAction()
+    data class HistoryWordClick(val word: String, val language: Language) : HomeAction()
 
     override fun equals(other: Any?): Boolean = false
     override fun hashCode(): Int {

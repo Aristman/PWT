@@ -7,4 +7,5 @@ import ru.marslab.pocketwordtranslator.domain.model.Word
 interface TranslateRepository : BaseRepository {
 
     fun getWordOfDay(): Flow<Word>
+    fun getHistory(): Flow<List<Word>>
 }

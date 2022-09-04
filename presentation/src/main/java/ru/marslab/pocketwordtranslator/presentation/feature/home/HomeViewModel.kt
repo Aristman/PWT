@@ -5,22 +5,39 @@ import ru.marslab.pocketwordtranslator.core.Action
 import ru.marslab.pocketwordtranslator.core.BaseViewModel
 import ru.marslab.pocketwordtranslator.core.BaseWidgetModel
 import ru.marslab.pocketwordtranslator.domain.model.switch
+import ru.marslab.pocketwordtranslator.domain.usecase.GetHistoryUseCase
 import ru.marslab.pocketwordtranslator.domain.usecase.GetWordOfDayUseCase
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
+import ru.marslab.pocketwordtranslator.presentation.widget.HistoryCardWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCardWidgetModel
 
 class HomeViewModel(
-    private val getWordOfDayUseCase: GetWordOfDayUseCase
+    private val getWordOfDay: GetWordOfDayUseCase,
+    private val getHistory: GetHistoryUseCase
 ) : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
     val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
+    val historyCardWidgetModel = HistoryCardWidgetModel()
 
     init {
+        loadWordOfDay()
+        loadHistory()
+    }
+
+    private fun loadHistory() {
         launch {
-            getWordOfDayUseCase()
+            getHistory()
+                .catch { handleError(it) }
+                .collect(historyCardWidgetModel::setHistory)
+        }
+    }
+
+    private fun loadWordOfDay() {
+        launch {
+            getWordOfDay()
                 .catch { handleError(it) }
                 .collect(wordOfDayCardWidgetModel::setWord)
         }
@@ -28,7 +45,8 @@ class HomeViewModel(
 
     override val widgets: List<BaseWidgetModel<*, out Action>> = listOf(
         translationFieldWidgetModel,
-        wordOfDayCardWidgetModel
+        wordOfDayCardWidgetModel,
+        historyCardWidgetModel
     ).actionObserve()
 
     override fun reduceStateByAction(
@@ -47,6 +65,9 @@ class HomeViewModel(
                 currentState.copy(language = currentState.language.switch())
             }
             is HomeAction.WordOfDayClick -> {
+                currentState
+            }
+            is HomeAction.HistoryWordClick -> {
                 currentState
             }
         }

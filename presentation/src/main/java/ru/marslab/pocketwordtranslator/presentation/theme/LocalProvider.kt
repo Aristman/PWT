@@ -27,3 +27,20 @@ internal val LocalColors = compositionLocalOf { lightPwtColors }
 internal val LocalShapes = compositionLocalOf { pwtShapes }
 
 internal val LocalDimens = compositionLocalOf { pwtDimens }
+
+@Composable
+fun GetLocalProperties(
+    content: @Composable (
+        dimens: PwtDimens,
+        brash: PwtBrash,
+        colors: PwtColors,
+        shapes: PwtShapes
+    ) -> Unit
+) {
+    content(
+        LocalDimens.current,
+        LocalBrash.current,
+        LocalColors.current,
+        LocalShapes.current
+    )
+}

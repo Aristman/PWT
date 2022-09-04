@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import ru.marslab.pocketwordtranslator.presentation.core.KodeinViewModel
 import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
+import ru.marslab.pocketwordtranslator.presentation.widget.HistoryCard
 import ru.marslab.pocketwordtranslator.presentation.widget.Logo
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationField
 import ru.marslab.pocketwordtranslator.presentation.widget.VSpacerMedium
@@ -37,5 +38,7 @@ private fun MainView(viewModel: HomeViewModel) {
         TranslationField(viewModel.translationFieldWidgetModel)
         VSpacerMedium()
         WordOfDayCard(viewModel.wordOfDayCardWidgetModel)
+        VSpacerMedium()
+        HistoryCard(viewModel.historyCardWidgetModel)
     }
 }

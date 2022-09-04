@@ -11,7 +11,7 @@ val Shapes = Shapes(
     large = RoundedCornerShape(0.dp)
 )
 
-internal data class PwtShapes(
+data class PwtShapes(
     val editTextField: Shape,
     val card: Shape
 )

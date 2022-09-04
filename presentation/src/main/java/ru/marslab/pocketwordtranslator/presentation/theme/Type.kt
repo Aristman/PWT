@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import ru.marslab.pocketwordtranslator.presentation.R
 
 private val appBaseFont = FontFamily(
-    Font(R.font.montserrat_alternates)
+    Font(R.font.montserrat_alternates, weight = FontWeight(600))
 )
 
 val Typography = Typography(
