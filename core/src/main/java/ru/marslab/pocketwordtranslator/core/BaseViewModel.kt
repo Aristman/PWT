@@ -12,7 +12,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -22,6 +24,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     initState: ST,
     eventBufferCapacity: Int = 1
 ) : ViewModel() {
+    protected open val widgets: List<BaseWidgetModel<*, out Action>> = emptyList()
     private val _state = MutableStateFlow(initState)
     val state: StateFlow<ST>
         get() = _state.asStateFlow()
@@ -32,7 +35,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     val event: SharedFlow<EV>
         get() = _event.asSharedFlow()
 
-    var navigator: Navigator? = null
+    protected var navigator: Navigator? = null
         private set
         get() = checkNotNull(field)
 
@@ -42,15 +45,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
             .stateIn(viewModelScope, SharingStarted.Eagerly, initState)
     }
 
-    protected fun collectWidgetsActions(vararg widgets: BaseWidgetModel<*, AC>) {
-        widgets.forEach { widget ->
-            launch {
-                widget.action.collect { sendAction(it) }
-            }
-        }
-    }
-
-    infix fun setNavigator(navigator: Navigator) {
+    fun setNavigator(navigator: Navigator) {
         this.navigator = navigator
     }
 
@@ -85,4 +80,14 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     }
 
     protected abstract fun reduceStateByAction(currentState: ST, action: AC): ST
+
+    @Suppress("UNCHECKED_CAST")
+    protected fun List<BaseWidgetModel<*, out Action>>.actionObserve() = this.also { widgets ->
+        widgets.map { it.action }
+            .merge()
+            .onEach { action ->
+                (action as? AC)?.let { this@BaseViewModel sendAction action }
+            }
+            .shareIn(viewModelScope, SharingStarted.Eagerly)
+    }
 }

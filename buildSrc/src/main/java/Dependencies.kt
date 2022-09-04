@@ -273,4 +273,19 @@ object Dependencies {
         const val jetbrains = "com.arkivanov.decompose:extensions-compose-jetbrains:$version"
         const val android = "com.arkivanov.decompose:extensions-android:$version"
     }
+
+    object KoDeIn {
+        private const val version = "7.12.0"
+        private const val versionCompose = "7.12.0"
+
+        const val core = "org.kodein.di:kodein-di:$version"
+        const val androidCore = "org.kodein.di:kodein-di-framework-android-core:$version"
+        const val androidSupport = "org.kodein.di:kodein-di-framework-android-support:$version"
+        const val androidJetpack = "org.kodein.di:kodein-di-framework-android-x:$version"
+        const val androidViewModel =
+            "org.kodein.di:kodein-di-framework-android-x-viewmodel:$version"
+        const val androidViewModelWithState =
+            "org.kodein.di:kodein-di-framework-android-x-viewmodel-savedstate:$version"
+        const val jetpackCompose = "org.kodein.di:kodein-di-framework-compose:$versionCompose"
+    }
 }

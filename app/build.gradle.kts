@@ -5,7 +5,6 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -61,11 +60,10 @@ android {
 
 dependencies {
 
-    applicationBaseDependencies()
-
+    moduleBaseDependencies()
     implementation(project(Module.presentation))
+    implementation(project(Module.data))
+    implementation(project(Module.domain))
     // Serialization
     implementation(Dependencies.Kotlin.serialization)
-    implementation(Dependencies.Dagger.hilt)
-    kapt(Dependencies.Dagger.hiltCompiler)
 }

@@ -1,22 +1,24 @@
 package ru.marslab.pocketwordtranslator.presentation.feature.home
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
-import ru.marslab.pocketwordtranslator.presentation.core.MakeViewModel
-import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
+import ru.marslab.pocketwordtranslator.presentation.core.KodeinViewModel
+import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
+import ru.marslab.pocketwordtranslator.presentation.widget.Logo
+import ru.marslab.pocketwordtranslator.presentation.widget.TranslationField
+import ru.marslab.pocketwordtranslator.presentation.widget.VSpacerMedium
+import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCard
 
 class HomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        MakeViewModel<HomeViewModel> { homeViewModel ->
+        KodeinViewModel<HomeViewModel> { homeViewModel ->
             MainView(viewModel = homeViewModel)
         }
     }
@@ -25,9 +27,15 @@ class HomeScreen : Screen {
 @Composable
 private fun MainView(viewModel: HomeViewModel) {
     val state = viewModel.state.collectAsState()
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Button(onClick = { viewModel.sendAction(HomeAction.TestClick) }) {
-            Text(text = state.value.word)
-        }
+    Column(
+        modifier = Modifier
+            .padding(LocalDimens.current.contentPadding)
+            .fillMaxSize()
+    ) {
+        Logo()
+        VSpacerMedium()
+        TranslationField(viewModel.translationFieldWidgetModel)
+        VSpacerMedium()
+        WordOfDayCard(viewModel.wordOfDayCardWidgetModel)
     }
 }

@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.navigation
+package ru.marslab.pocketwordtranslator.presentation.navigation
 
 import cafe.adriel.voyager.core.registry.screenModule
 import cafe.adriel.voyager.core.screen.Screen

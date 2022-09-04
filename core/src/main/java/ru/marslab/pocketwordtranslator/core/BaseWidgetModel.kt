@@ -19,7 +19,7 @@ abstract class BaseWidgetModel<D, AC : Action>(initValue: D) {
         _action.tryEmit(action)
     }
 
-    fun setState(state: () -> D) {
+    protected fun setState(state: () -> D) {
         _state.value = state()
     }
 }

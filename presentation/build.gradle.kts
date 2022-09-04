@@ -3,7 +3,6 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -46,7 +45,5 @@ dependencies {
     applicationBaseDependencies()
 
     implementation(project(Module.core))
-    implementation(Dependencies.Dagger.hilt)
-    kapt(Dependencies.Dagger.hiltCompiler)
-    implementation(Dependencies.Jetpack.Compose.viewModel)
+    implementation(project(Module.domain))
 }
