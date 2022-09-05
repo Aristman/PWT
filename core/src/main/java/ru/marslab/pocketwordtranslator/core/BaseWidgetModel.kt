@@ -1,5 +1,6 @@
 package ru.marslab.pocketwordtranslator.core
 
+import androidx.compose.runtime.Stable
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -7,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+@Stable
 abstract class BaseWidgetModel<D, AC : Action>(initValue: D) {
     private val _state = MutableStateFlow(initValue)
     val state: StateFlow<D> = _state.asStateFlow()

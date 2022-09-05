@@ -31,3 +31,16 @@ val Typography = Typography(
     )
     */
 )
+
+internal val snackBarTypeStyle = TextStyle(
+    fontFamily = appBaseFont,
+    fontSize = 14.sp
+)
+
+data class PwtTypes(
+    val snackBar: TextStyle
+)
+
+internal val pwtTypes = PwtTypes(
+    snackBar = snackBarTypeStyle
+)

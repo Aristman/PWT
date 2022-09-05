@@ -52,7 +52,7 @@ class WordOfDayCardWidgetModel :
 @Composable
 fun WordOfDayCard(widgetModel: WordOfDayCardWidgetModel) {
     val state = widgetModel.state.collectAsState()
-    GetLocalProperties { dimens, _, _, shapes ->
+    GetLocalProperties { dimens, _, _, shapes, _ ->
         Card(
             onClick = { widgetModel sendAction HomeAction.WordOfDayClick(state.value.englishWord) },
             shape = shapes.card,

@@ -68,6 +68,8 @@ internal val lightColors = lightColors(
 
 data class PwtColors(
     val background: Color,
+    val snackBarColor: Color,
+    val snackBarTextColor: Color,
     val white30: Color,
     val white50: Color,
     val white80: Color,
@@ -85,7 +87,9 @@ internal val darkPwtColors = PwtColors(
     gray = gray,
     lightGray = lightGray,
     darkGray70 = darkGray70,
-    darkGray50 = darkGray50
+    darkGray50 = darkGray50,
+    snackBarColor = surfaceDarkColor,
+    snackBarTextColor = onSurfaceDarkColor
 )
 
 internal val lightPwtColors = PwtColors(
@@ -96,7 +100,9 @@ internal val lightPwtColors = PwtColors(
     gray = gray,
     lightGray = lightGray,
     darkGray70 = darkGray70,
-    darkGray50 = darkGray50
+    darkGray50 = darkGray50,
+    snackBarColor = surfaceLightColor,
+    snackBarTextColor = onSurfaceLightColor
 )
 
 internal fun getColorPalette(darkTheme: Boolean): Colors =

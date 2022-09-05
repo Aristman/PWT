@@ -61,7 +61,7 @@ class HistoryCardWidgetModel() :
 @Composable
 fun HistoryCard(widgetModel: HistoryCardWidgetModel) {
     val state = widgetModel.state.collectAsState()
-    GetLocalProperties { dimens, _, colors, shapes ->
+    GetLocalProperties { dimens, _, colors, shapes, _ ->
         Column(
             modifier = Modifier
                 .fillMaxWidth()

@@ -4,11 +4,12 @@ import kotlinx.coroutines.flow.catch
 import ru.marslab.pocketwordtranslator.core.Action
 import ru.marslab.pocketwordtranslator.core.BaseViewModel
 import ru.marslab.pocketwordtranslator.core.BaseWidgetModel
+import ru.marslab.pocketwordtranslator.core.Event
 import ru.marslab.pocketwordtranslator.domain.model.switch
 import ru.marslab.pocketwordtranslator.domain.usecase.GetHistoryUseCase
 import ru.marslab.pocketwordtranslator.domain.usecase.GetWordOfDayUseCase
+import ru.marslab.pocketwordtranslator.presentation.common.model.BaseAppEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
-import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
 import ru.marslab.pocketwordtranslator.presentation.widget.HistoryCardWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
@@ -17,7 +18,7 @@ import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCardWidgetMo
 class HomeViewModel(
     private val getWordOfDay: GetWordOfDayUseCase,
     private val getHistory: GetHistoryUseCase
-) : BaseViewModel<HomeState, HomeEvent, HomeAction>(HomeState()) {
+) : BaseViewModel<HomeState, Event, HomeAction>(HomeState()) {
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
     val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
     val historyCardWidgetModel = HistoryCardWidgetModel()
@@ -54,20 +55,26 @@ class HomeViewModel(
         action: HomeAction
     ): HomeState =
         when (action) {
-            is HomeAction.HistoryClick -> {
-                currentState
-            }
             is HomeAction.TranslateClick -> {
+                sendEvent(BaseAppEvent.ToastEvent(message = "Translate Click"))
                 currentState
             }
             is HomeAction.LanguageClick -> {
+                sendEvent(BaseAppEvent.ToastEvent(message = "Язык - ${currentState.language.name}"))
                 translationFieldWidgetModel.switchLanguage()
                 currentState.copy(language = currentState.language.switch())
             }
             is HomeAction.WordOfDayClick -> {
+                sendEvent(BaseAppEvent.ToastEvent(message = action.word))
                 currentState
             }
             is HomeAction.HistoryWordClick -> {
+                launch {
+                    sendEvent(
+                        BaseAppEvent.SnackBarEvent(message = "History Click ${action.word}"),
+                        dismissDelay = 2000
+                    )
+                }
                 currentState
             }
         }

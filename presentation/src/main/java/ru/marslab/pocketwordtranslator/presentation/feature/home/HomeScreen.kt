@@ -7,7 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
-import ru.marslab.pocketwordtranslator.presentation.core.KodeinViewModel
+import ru.marslab.pocketwordtranslator.presentation.common.EventBaseHandler
+import ru.marslab.pocketwordtranslator.presentation.common.KodeinViewModel
 import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
 import ru.marslab.pocketwordtranslator.presentation.widget.HistoryCard
 import ru.marslab.pocketwordtranslator.presentation.widget.Logo
@@ -28,17 +29,20 @@ class HomeScreen : Screen {
 @Composable
 private fun MainView(viewModel: HomeViewModel) {
     val state = viewModel.state.collectAsState()
-    Column(
-        modifier = Modifier
-            .padding(LocalDimens.current.contentPadding)
-            .fillMaxSize()
-    ) {
-        Logo()
-        VSpacerMedium()
-        TranslationField(viewModel.translationFieldWidgetModel)
-        VSpacerMedium()
-        WordOfDayCard(viewModel.wordOfDayCardWidgetModel)
-        VSpacerMedium()
-        HistoryCard(viewModel.historyCardWidgetModel)
+    val event = viewModel.event.collectAsState(null)
+    EventBaseHandler(event = event.value) {
+        Column(
+            modifier = Modifier
+                .padding(LocalDimens.current.contentPadding)
+                .fillMaxSize()
+        ) {
+            Logo()
+            VSpacerMedium()
+            TranslationField(viewModel.translationFieldWidgetModel)
+            VSpacerMedium()
+            WordOfDayCard(viewModel.wordOfDayCardWidgetModel)
+            VSpacerMedium()
+            HistoryCard(viewModel.historyCardWidgetModel)
+        }
     }
 }

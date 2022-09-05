@@ -1,6 +1,7 @@
 package ru.marslab.pocketwordtranslator.core
 
 import android.util.Log
+import androidx.compose.runtime.Stable
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.navigator.Navigator
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 
 private const val ERROR_LOG_TAG = "ViewModel Error"
 
+@Stable
 abstract class BaseScreenModel<ST, EV : Event, AC : Action>(
     initState: ST,
     eventBufferCapacity: Int = 1
