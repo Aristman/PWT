@@ -86,7 +86,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
         _state.tryEmit(reduceBlock())
     }
 
-    protected abstract fun reduceStateByAction(currentState: ST, action: AC): ST
+    protected abstract fun reduceStateByAction(currentState: ST, action: Action): ST
 
     @Suppress("UNCHECKED_CAST")
     protected fun List<BaseWidgetModel<*, out Action>>.actionObserve() = this.also { widgets ->
