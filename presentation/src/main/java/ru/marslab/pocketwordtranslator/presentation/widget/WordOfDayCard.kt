@@ -25,9 +25,8 @@ import ru.marslab.pocketwordtranslator.core.BaseWidgetModel
 import ru.marslab.pocketwordtranslator.domain.model.Word
 import ru.marslab.pocketwordtranslator.presentation.R
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
+import ru.marslab.pocketwordtranslator.presentation.theme.GetLocalProperties
 import ru.marslab.pocketwordtranslator.presentation.theme.LocalColors
-import ru.marslab.pocketwordtranslator.presentation.theme.LocalDimens
-import ru.marslab.pocketwordtranslator.presentation.theme.LocalShapes
 
 class WordOfDayCardWidgetModel :
     BaseWidgetModel<WordOfDayCardWidgetModel.WordOfDayState, HomeAction>(
@@ -53,45 +52,45 @@ class WordOfDayCardWidgetModel :
 @Composable
 fun WordOfDayCard(widgetModel: WordOfDayCardWidgetModel) {
     val state = widgetModel.state.collectAsState()
-    val dimens = LocalDimens.current
-    val shapes = LocalShapes.current
-    Card(
-        onClick = { widgetModel sendAction HomeAction.WordOfDayClick(state.value.englishWord) },
-        shape = shapes.card,
-        modifier = Modifier
-            .height(228.dp)
-            .fillMaxWidth()
-    ) {
-        CardBackground()
-        Box(
+    GetLocalProperties { dimens, _, _, shapes, _ ->
+        Card(
+            onClick = { widgetModel sendAction HomeAction.WordOfDayClick(state.value.englishWord) },
+            shape = shapes.card,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(dimens.contentPadding)
+                .height(228.dp)
+                .fillMaxWidth()
         ) {
-            CardWordOfDayTitle()
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
+            CardBackground()
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(dimens.contentPadding)
             ) {
-                Text(
-                    text = state.value.englishWord,
-                    fontWeight = FontWeight(600),
-                    fontSize = 30.sp,
-                    color = LocalColors.current.white80
-                )
-                Text(
-                    text = "-${state.value.russianWord}-",
-                    fontWeight = FontWeight(600),
-                    fontSize = 18.sp,
-                    color = LocalColors.current.white80
+                CardWordOfDayTitle()
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = state.value.englishWord,
+                        fontWeight = FontWeight(600),
+                        fontSize = 30.sp,
+                        color = LocalColors.current.white80
+                    )
+                    Text(
+                        text = "-${state.value.russianWord}-",
+                        fontWeight = FontWeight(600),
+                        fontSize = 18.sp,
+                        color = LocalColors.current.white80
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.img_check),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
                 )
             }
-            Image(
-                painter = painterResource(id = R.drawable.img_check),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-            )
         }
     }
 }

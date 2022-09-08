@@ -1,4 +1,4 @@
-package ru.marslab.pocketwordtranslator.presentation.core
+package ru.marslab.pocketwordtranslator.presentation.common
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel

@@ -6,5 +6,10 @@ import org.kodein.di.instance
 import ru.marslab.pocketwordtranslator.presentation.feature.home.HomeViewModel
 
 val viewModelModule = DI.Module(name = "viewModels") {
-    bindSingleton { HomeViewModel(getWordOfDayUseCase = instance()) }
+    bindSingleton {
+        HomeViewModel(
+            getWordOfDay = instance(),
+            getHistory = instance()
+        )
+    }
 }

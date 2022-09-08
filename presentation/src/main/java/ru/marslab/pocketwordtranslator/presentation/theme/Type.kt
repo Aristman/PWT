@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import ru.marslab.pocketwordtranslator.presentation.R
 
 private val appBaseFont = FontFamily(
-    Font(R.font.montserrat_alternates)
+    Font(R.font.montserrat_alternates, weight = FontWeight(600))
 )
 
 val Typography = Typography(
@@ -30,4 +30,17 @@ val Typography = Typography(
         fontSize = 12.sp
     )
     */
+)
+
+internal val snackBarTypeStyle = TextStyle(
+    fontFamily = appBaseFont,
+    fontSize = 14.sp
+)
+
+data class PwtTypes(
+    val snackBar: TextStyle
+)
+
+internal val pwtTypes = PwtTypes(
+    snackBar = snackBarTypeStyle
 )
