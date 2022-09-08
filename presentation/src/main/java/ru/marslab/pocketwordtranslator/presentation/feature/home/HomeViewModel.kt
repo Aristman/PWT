@@ -11,7 +11,6 @@ import ru.marslab.pocketwordtranslator.domain.usecase.GetWordOfDayUseCase
 import ru.marslab.pocketwordtranslator.presentation.common.model.BaseAppEvent
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeAction
 import ru.marslab.pocketwordtranslator.presentation.feature.home.model.HomeState
-import ru.marslab.pocketwordtranslator.presentation.widget.AppBottomBarWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.HistoryCardWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.TranslationFieldWidgetModel
 import ru.marslab.pocketwordtranslator.presentation.widget.WordOfDayCardWidgetModel
@@ -23,7 +22,6 @@ class HomeViewModel(
     val translationFieldWidgetModel = TranslationFieldWidgetModel()
     val wordOfDayCardWidgetModel = WordOfDayCardWidgetModel()
     val historyCardWidgetModel = HistoryCardWidgetModel()
-    val appBottomBarWidgetModel = AppBottomBarWidgetModel()
 
     init {
         loadWordOfDay()
@@ -49,8 +47,7 @@ class HomeViewModel(
     override val widgets: List<BaseWidgetModel<*, out Action>> = listOf(
         translationFieldWidgetModel,
         wordOfDayCardWidgetModel,
-        historyCardWidgetModel,
-        appBottomBarWidgetModel
+        historyCardWidgetModel
     ).actionObserve()
 
     override fun reduceStateByAction(

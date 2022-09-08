@@ -48,7 +48,7 @@ fun AppBottomBar(widgetModel: AppBottomBarWidgetModel) {
                 .fillMaxWidth()
                 .height(dimens.bottomSheetHeight)
                 .clip(shapes.bottomSheet)
-                .background(brush = brash.bottomBarBackgroun)
+                .background(brush = brash.bottomBarBackground)
         ) {
             BottomImageButton(R.drawable.ic_arrow_right) {
                 val screeKey = HomeScreen().key

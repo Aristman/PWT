@@ -4,14 +4,14 @@ import androidx.compose.ui.graphics.Brush
 
 data class PwtBrash(
     val background: Brush,
-    val bottomBarBackgroun: Brush
+    val bottomBarBackground: Brush
 )
 
 internal val pwtBrash = PwtBrash(
     background = Brush.verticalGradient(
         listOf(pwtLightGray, pwtGray)
     ),
-    bottomBarBackgroun = Brush.verticalGradient(
+    bottomBarBackground = Brush.verticalGradient(
         listOf(primaryColor, primaryLightColor)
     )
 )
