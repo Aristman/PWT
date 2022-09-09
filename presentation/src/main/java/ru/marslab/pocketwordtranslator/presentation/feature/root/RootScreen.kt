@@ -7,28 +7,45 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.registry.rememberScreen
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
-import org.kodein.di.compose.localDI
-import org.kodein.di.instance
+import cafe.adriel.voyager.navigator.NavigatorContent
+import ru.marslab.pocketwordtranslator.presentation.common.KodeinViewModel
 import ru.marslab.pocketwordtranslator.presentation.navigation.NavGraph
 import ru.marslab.pocketwordtranslator.presentation.theme.appBackground
 import ru.marslab.pocketwordtranslator.presentation.theme.primaryLightColor
 import ru.marslab.pocketwordtranslator.presentation.widget.AppBottomBar
 
+class RootScreen : Screen {
+
+    @Composable
+    override fun Content() {
+        KodeinViewModel<RootViewModel> { viewModel ->
+            RootView(viewModel = viewModel)
+        }
+    }
+}
+
 @Composable
-fun RootView() {
-    val viewModel: RootViewModel by localDI().instance()
-    Scaffold(
-        backgroundColor = primaryLightColor,
-        bottomBar = { AppBottomBar(viewModel.appBottomBarWidgetModel) }
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(it)
-                .appBackground()
+fun RootView(
+    viewModel: RootViewModel,
+    content: NavigatorContent = { CurrentScreen() }
+) {
+    Navigator(screen = rememberScreen(provider = NavGraph.HomeDestination)) { navigator ->
+        viewModel.setNavigator(navigator)
+        Scaffold(
+            backgroundColor = primaryLightColor,
+            bottomBar = { AppBottomBar(viewModel.appBottomBarWidgetModel) }
         ) {
-            Navigator(screen = rememberScreen(provider = NavGraph.HomeDestination))
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it)
+                    .appBackground()
+            ) {
+                content(navigator)
+            }
         }
     }
 }

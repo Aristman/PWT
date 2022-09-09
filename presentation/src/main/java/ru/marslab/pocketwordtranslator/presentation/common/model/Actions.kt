@@ -2,6 +2,8 @@ package ru.marslab.pocketwordtranslator.presentation.common.model // ktlint-disa
 
 import ru.marslab.pocketwordtranslator.core.Action
 
-data class BottomNavigationAction(
-    val screenId: String
-) : Action
+sealed class BottomNavigationAction : Action {
+    object HomeScreen : BottomNavigationAction()
+    object CardsScreen : BottomNavigationAction()
+    object SettingsScreen : BottomNavigationAction()
+}

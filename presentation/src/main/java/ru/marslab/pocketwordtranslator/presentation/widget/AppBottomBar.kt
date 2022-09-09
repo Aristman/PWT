@@ -51,9 +51,8 @@ fun AppBottomBar(widgetModel: AppBottomBarWidgetModel) {
                 .background(brush = brash.bottomBarBackground)
         ) {
             BottomImageButton(R.drawable.ic_arrow_right) {
-                val screeKey = HomeScreen().key
-                widgetModel.setActiveScreen(screeKey)
-                widgetModel.sendAction(BottomNavigationAction(screeKey))
+                widgetModel.setActiveScreen(HomeScreen().key)
+                widgetModel.sendAction(BottomNavigationAction.HomeScreen)
             }
             BottomImageButton(R.drawable.ic_cards) {
 //            widgetModel.sendAction(BottomNavigationAction(1))

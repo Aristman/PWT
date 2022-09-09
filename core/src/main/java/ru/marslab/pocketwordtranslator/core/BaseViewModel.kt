@@ -31,6 +31,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     private val _state = MutableStateFlow(initState)
     val state: StateFlow<ST>
         get() = _state.asStateFlow()
+    private var _navigator: Navigator? = null
 
     private val action = MutableSharedFlow<AC>()
 
@@ -38,9 +39,8 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     val event: SharedFlow<EV?>
         get() = _event.asSharedFlow()
 
-    protected var navigator: Navigator? = null
-        private set
-        get() = checkNotNull(field)
+    protected val navigator: Navigator
+        get() = checkNotNull(_navigator)
 
     init {
         this.action
@@ -49,7 +49,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     }
 
     fun setNavigator(navigator: Navigator) {
-        this.navigator = navigator
+        this._navigator = navigator
     }
 
     infix fun sendAction(action: AC) {
@@ -59,7 +59,7 @@ abstract class BaseViewModel<ST, EV : Event, AC : Action>(
     }
 
     fun popUp() {
-        navigator?.pop()
+        _navigator?.pop()
     }
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
