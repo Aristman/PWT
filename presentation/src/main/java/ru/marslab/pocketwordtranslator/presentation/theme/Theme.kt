@@ -9,7 +9,7 @@ fun PocketWordTranslatorTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    LocalContentProvider(darkTheme) {
+    LocalContentProvider() {
         MaterialTheme(
             colors = getColorPalette(darkTheme),
             typography = Typography,
