@@ -3,6 +3,7 @@ package ru.marslab.pocketwordtranslator.presentation.feature.root // ktlint-disa
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import ru.marslab.pocketwordtranslator.presentation.navigation.NavGraph
 import ru.marslab.pocketwordtranslator.presentation.theme.appBackground
 import ru.marslab.pocketwordtranslator.presentation.theme.primaryLightColor
 import ru.marslab.pocketwordtranslator.presentation.widget.AppBottomBar
+import ru.marslab.pocketwordtranslator.presentation.widget.MainFloatingActionButton
 
 class RootScreen : Screen {
 
@@ -36,7 +38,10 @@ fun RootView(
         viewModel.setNavigator(navigator)
         Scaffold(
             backgroundColor = primaryLightColor,
-            bottomBar = { AppBottomBar(viewModel.appBottomBarWidgetModel) }
+            bottomBar = { AppBottomBar(viewModel.appBottomBarWidgetModel) },
+            floatingActionButton = { MainFloatingActionButton(viewModel.mainFABWidgetModel) },
+            floatingActionButtonPosition = FabPosition.Center,
+            isFloatingActionButtonDocked = true
         ) {
             Box(
                 modifier = Modifier
